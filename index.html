@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Ficha de Anamnese — Tatuagem</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet"
+>
+
 
 <style>
+
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -23,65 +43,158 @@ html {
 
 body {
     margin: 0;
+
     background: #080808;
+
     color: #eee;
+
     font-family: 'Montserrat', sans-serif;
 }
 
 
 /* =====================================================
-   CAPA
+   CAPA — GEOMÉTRICA
 ===================================================== */
 
 #capa {
+
     min-height: 100vh;
+
     min-height: 100dvh;
+
     background: #080808;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    padding: 30px 20px;
+    padding: 25px 20px;
+
 }
 
-.capa-decoracao {
-    width: min(100%, 500px);
-    min-height: 85vh;
 
-    border: 1px solid #555;
-    border-radius: 50%;
+.capa-decoracao {
+
+    width: min(100%, 500px);
+
+    height: min(86vh, 720px);
+
+    min-height: 560px;
 
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    padding: 45px 35px;
 }
 
+
+/* QUADRADO EXTERNO */
+
 .capa-decoracao::before {
+
     content: "";
 
     position: absolute;
 
-    inset: 9px;
+    inset: 12px;
 
-    border: 1px solid #333;
-    border-radius: 50%;
+    border: 1px solid #555;
+
 }
 
+
+/* QUADRADO INTERNO */
+
+.capa-decoracao::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border: 1px solid #292929;
+
+}
+
+
+/* CANTOS GEOMÉTRICOS */
+
 .capa-conteudo {
+
     position: relative;
-    z-index: 2;
+
+    z-index: 3;
+
+    width: calc(100% - 70px);
+
+    height: calc(100% - 70px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
 
     text-align: center;
 
-    width: 100%;
 }
 
+
+/* CÍRCULO DECORATIVO */
+
+.capa-conteudo::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+
+    height: 210px;
+
+    border: 1px solid #252525;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+}
+
+
+/* LOSANGO */
+
+.capa-conteudo::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+
+    height: 145px;
+
+    border: 1px solid #333;
+
+    transform: rotate(45deg);
+
+    z-index: -1;
+
+}
+
+
+/* PEQUENO TEXTO */
+
 .capa-pequeno {
+
     font-size: 10px;
 
     letter-spacing: 4px;
@@ -90,19 +203,30 @@ body {
 
     color: #aaa;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
+
 }
 
+
+/* LINHA */
+
 .capa-linha {
+
     width: 55px;
+
     height: 1px;
 
     background: #777;
 
     margin: 0 auto 25px;
+
 }
 
+
+/* TÍTULO */
+
 .capa-titulo {
+
     font-family: 'Cormorant Garamond', serif;
 
     font-size: clamp(42px, 11vw, 70px);
@@ -114,22 +238,30 @@ body {
     letter-spacing: -1px;
 
     color: #f2f2f2;
+
 }
 
+
 .capa-titulo span {
+
     display: block;
 
     font-size: .62em;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
     letter-spacing: 1px;
+
 }
 
+
+/* SUBTÍTULO */
+
 .capa-subtitulo {
+
     max-width: 290px;
 
-    margin: 30px auto;
+    margin: 32px auto;
 
     font-size: 10px;
 
@@ -140,9 +272,14 @@ body {
     color: #aaa;
 
     text-transform: uppercase;
+
 }
 
+
+/* BOTÃO */
+
 .botao-capa {
+
     border: 1px solid #777;
 
     background: transparent;
@@ -162,13 +299,18 @@ body {
     cursor: pointer;
 
     transition: .2s;
+
 }
 
+
 .botao-capa:hover,
+
 .botao-capa:active {
+
     background: #eee;
 
     color: #080808;
+
 }
 
 
@@ -177,6 +319,7 @@ body {
 ===================================================== */
 
 #formularioPagina {
+
     display: none;
 
     min-height: 100vh;
@@ -186,17 +329,23 @@ body {
     color: #161616;
 
     padding-bottom: 50px;
+
 }
 
+
 .form-topo {
+
     background: #080808;
 
     color: white;
 
     padding: 20px;
+
 }
 
+
 .voltar {
+
     display: inline-flex;
 
     align-items: center;
@@ -209,8 +358,6 @@ body {
 
     border: 0;
 
-    text-decoration: none;
-
     font-family: 'Montserrat', sans-serif;
 
     font-size: 11px;
@@ -222,9 +369,12 @@ body {
     cursor: pointer;
 
     padding: 0;
+
 }
 
+
 .form-topo h1 {
+
     margin: 0;
 
     font-family: 'Cormorant Garamond', serif;
@@ -234,9 +384,12 @@ body {
     line-height: 1;
 
     font-weight: 500;
+
 }
 
+
 .form-topo p {
+
     margin: 12px 0 0;
 
     font-size: 10px;
@@ -244,15 +397,21 @@ body {
     letter-spacing: 1px;
 
     color: #aaa;
+
 }
 
+
 form {
+
     width: min(100% - 28px, 760px);
 
     margin: 25px auto;
+
 }
 
+
 .intro {
+
     background: white;
 
     padding: 20px;
@@ -264,9 +423,12 @@ form {
     font-size: 12px;
 
     line-height: 1.7;
+
 }
 
+
 .secao {
+
     background: white;
 
     border: 1px solid #ddd;
@@ -274,9 +436,12 @@ form {
     margin-bottom: 18px;
 
     padding: 20px;
+
 }
 
+
 .secao h2 {
+
     margin: 0 0 18px;
 
     font-family: 'Cormorant Garamond', serif;
@@ -288,17 +453,26 @@ form {
     border-bottom: 1px solid #ddd;
 
     padding-bottom: 10px;
+
 }
+
 
 .campo {
+
     margin-bottom: 18px;
+
 }
+
 
 .campo:last-child {
+
     margin-bottom: 0;
+
 }
 
+
 label.titulo-campo {
+
     display: block;
 
     font-size: 12px;
@@ -306,7 +480,9 @@ label.titulo-campo {
     font-weight: 600;
 
     margin-bottom: 8px;
+
 }
+
 
 input[type="text"],
 input[type="email"],
@@ -315,6 +491,7 @@ input[type="date"],
 input[type="number"],
 textarea,
 select {
+
     width: 100%;
 
     min-height: 48px;
@@ -334,37 +511,52 @@ select {
     font-size: 13px;
 
     outline: none;
+
 }
 
+
 textarea {
+
     min-height: 100px;
 
     resize: vertical;
+
 }
+
 
 input:focus,
 textarea:focus,
 select:focus {
+
     border-color: #111;
+
 }
 
+
 .duas-colunas {
+
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
     gap: 14px;
+
 }
 
+
 .radio-linha {
+
     display: flex;
 
     gap: 10px;
 
     flex-wrap: wrap;
+
 }
 
+
 .opcao {
+
     display: flex;
 
     align-items: center;
@@ -382,35 +574,50 @@ select:focus {
     font-size: 12px;
 
     cursor: pointer;
+
 }
 
+
 .opcao input {
+
     width: 18px;
 
     height: 18px;
 
     accent-color: #111;
+
 }
 
+
 .pergunta-saude {
+
     padding: 14px 0;
 
     border-bottom: 1px solid #eee;
+
 }
+
 
 .pergunta-saude:last-child {
+
     border-bottom: 0;
+
 }
 
+
 .pergunta-saude .texto {
+
     font-size: 12px;
 
     font-weight: 600;
 
     margin-bottom: 9px;
+
 }
 
+
 .declaracao {
+
     font-size: 12px;
 
     line-height: 1.7;
@@ -422,9 +629,12 @@ select:focus {
     border: 1px solid #ddd;
 
     margin-bottom: 15px;
+
 }
 
+
 .checkbox-concordo {
+
     display: flex;
 
     align-items: flex-start;
@@ -436,9 +646,12 @@ select:focus {
     line-height: 1.5;
 
     cursor: pointer;
+
 }
 
+
 .checkbox-concordo input {
+
     width: 20px;
 
     height: 20px;
@@ -448,6 +661,7 @@ select:focus {
     margin-top: 1px;
 
     accent-color: #111;
+
 }
 
 
@@ -456,10 +670,14 @@ select:focus {
 ===================================================== */
 
 .assinatura-area {
-    margin-top: 20px;
+
+    margin-top: 22px;
+
 }
 
+
 .assinatura-area label {
+
     display: block;
 
     font-size: 12px;
@@ -467,9 +685,18 @@ select:focus {
     font-weight: 600;
 
     margin-bottom: 8px;
+
 }
 
+
+/*
+   IMPORTANTE:
+   O canvas agora tem dimensões físicas reais.
+   O JavaScript também reajusta depois que a ficha abre.
+*/
+
 canvas {
+
     width: 100%;
 
     height: 180px;
@@ -485,9 +712,12 @@ canvas {
     touch-action: none;
 
     cursor: crosshair;
+
 }
 
+
 .botao-limpar {
+
     margin-top: 8px;
 
     min-height: 42px;
@@ -505,9 +735,12 @@ canvas {
     letter-spacing: 1px;
 
     cursor: pointer;
+
 }
 
+
 .botao-enviar {
+
     width: 100%;
 
     min-height: 56px;
@@ -527,15 +760,21 @@ canvas {
     letter-spacing: 2px;
 
     cursor: pointer;
+
 }
 
+
 .botao-enviar:disabled {
+
     opacity: .6;
 
     cursor: wait;
+
 }
 
+
 .rodape {
+
     text-align: center;
 
     color: #777;
@@ -545,6 +784,7 @@ canvas {
     line-height: 1.6;
 
     margin: 25px 10px;
+
 }
 
 
@@ -555,26 +795,79 @@ canvas {
 @media (max-width: 600px) {
 
     .duas-colunas {
+
         grid-template-columns: 1fr;
+
     }
+
 
     .capa-decoracao {
-        min-height: 82vh;
 
-        padding: 35px 25px;
+        height: 82vh;
+
+        min-height: 540px;
+
     }
+
+
+    .capa-decoracao::before {
+
+        inset: 8px;
+
+    }
+
+
+    .capa-decoracao::after {
+
+        inset: 20px;
+
+    }
+
+
+    .capa-conteudo {
+
+        width: calc(100% - 50px);
+
+        height: calc(100% - 50px);
+
+    }
+
+
+    .capa-conteudo::before {
+
+        width: 180px;
+
+        height: 180px;
+
+    }
+
+
+    .capa-conteudo::after {
+
+        width: 125px;
+
+        height: 125px;
+
+    }
+
 
     .secao {
+
         padding: 17px;
+
     }
 
+
     .form-topo {
+
         padding: 18px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -591,11 +884,16 @@ canvas {
 
         <div class="capa-conteudo">
 
+
             <div class="capa-pequeno">
+
                 Atendimento de tatuagem
+
             </div>
 
+
             <div class="capa-linha"></div>
+
 
             <div class="capa-titulo">
 
@@ -607,17 +905,24 @@ canvas {
 
             </div>
 
+
             <div class="capa-subtitulo">
+
                 Preenchimento obrigatório antes do procedimento
+
             </div>
+
 
             <button
                 type="button"
                 class="botao-capa"
                 onclick="abrirFicha()"
             >
+
                 PREENCHER FICHA
+
             </button>
+
 
         </div>
 
@@ -628,7 +933,7 @@ canvas {
 
 
 <!-- =====================================================
-     FICHA
+     FORMULÁRIO
 ===================================================== -->
 
 <section id="formularioPagina">
@@ -636,21 +941,27 @@ canvas {
 
 <div class="form-topo">
 
+
     <button
         type="button"
         class="voltar"
         onclick="voltarCapa()"
     >
+
         ← VOLTAR
+
     </button>
+
 
     <h1>
         Ficha de Anamnese — Tatuagem
     </h1>
 
+
     <p>
         Preenchimento obrigatório antes do procedimento
     </p>
+
 
 </div>
 
@@ -669,17 +980,20 @@ canvas {
     value="Nova Ficha de Anamnese — Tatuagem"
 >
 
+
 <input
     type="hidden"
     name="_template"
     value="table"
 >
 
+
 <input
     type="hidden"
     name="_captcha"
     value="false"
 >
+
 
 <input
     type="text"
@@ -693,6 +1007,7 @@ canvas {
     name="Assinatura do cliente"
     id="assinaturaClienteDados"
 >
+
 
 <input
     type="hidden"
@@ -812,7 +1127,6 @@ Data de nascimento *
 </div>
 
 
-
 <div class="campo">
 
 <label class="titulo-campo">
@@ -846,7 +1160,6 @@ RG
 >
 
 </div>
-
 
 
 <div class="campo">
@@ -963,7 +1276,7 @@ Outros
 
 
 <!-- =====================================================
-     AVALIAÇÃO DE SAÚDE
+     SAÚDE
 ===================================================== -->
 
 <div class="secao">
@@ -973,7 +1286,9 @@ AVALIAÇÃO DE SAÚDE
 </h2>
 
 <p style="font-size:11px;color:#666;margin-top:-8px;margin-bottom:15px;">
+
 Marque NÃO ou SIM. Se SIM, descreva quando necessário.
+
 </p>
 
 
@@ -999,7 +1314,9 @@ INFORMAÇÕES COMPLEMENTARES
 <div class="campo">
 
 <label class="titulo-campo">
+
 Alergias conhecidas (medicamentos, alimentos, látex, etc.)
+
 </label>
 
 <textarea
@@ -1013,7 +1330,9 @@ Alergias conhecidas (medicamentos, alimentos, látex, etc.)
 <div class="campo">
 
 <label class="titulo-campo">
+
 Medicamentos em uso atualmente
+
 </label>
 
 <textarea
@@ -1027,10 +1346,14 @@ Medicamentos em uso atualmente
 <div class="campo">
 
 <label class="titulo-campo">
+
 Está em tratamento dermatológico?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1045,6 +1368,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1057,6 +1381,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1066,10 +1391,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Fez algum procedimento recente (cirurgia, botox, peeling)?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1084,6 +1413,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1096,6 +1426,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1105,10 +1436,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Teve exposição solar intensa nos últimos 7 dias?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1123,6 +1458,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1135,6 +1471,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1144,10 +1481,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Está se sentindo bem hoje? — Febre, gripe, dor, mal-estar
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1162,6 +1503,7 @@ SIM
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1174,6 +1516,7 @@ NÃO
 
 </label>
 
+
 </div>
 
 </div>
@@ -1183,10 +1526,14 @@ NÃO
 <div class="campo">
 
 <label class="titulo-campo">
+
 Se alimentou nas últimas 4 horas?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1201,6 +1548,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1213,6 +1561,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1222,10 +1571,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Está hidratado(a)?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1240,6 +1593,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1252,6 +1606,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1261,10 +1616,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Ingeriu bebida alcoólica nas últimas 24h?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1279,6 +1638,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1291,6 +1651,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1300,10 +1661,14 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Fez uso de substância (drogas) recentemente?
+
 </label>
 
+
 <div class="radio-linha">
+
 
 <label class="opcao">
 
@@ -1318,6 +1683,7 @@ NÃO
 
 </label>
 
+
 <label class="opcao">
 
 <input
@@ -1330,6 +1696,7 @@ SIM
 
 </label>
 
+
 </div>
 
 </div>
@@ -1339,7 +1706,9 @@ SIM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Há alguma informação importante que devemos saber?
+
 </label>
 
 <textarea
@@ -1353,7 +1722,9 @@ Há alguma informação importante que devemos saber?
 <div class="campo">
 
 <label class="titulo-campo">
+
 Local do corpo a ser tatuado
+
 </label>
 
 <input
@@ -1369,7 +1740,9 @@ Local do corpo a ser tatuado
 <div class="campo">
 
 <label class="titulo-campo">
+
 Descrição da arte
+
 </label>
 
 <textarea
@@ -1387,7 +1760,9 @@ Descrição da arte
 <div class="campo">
 
 <label class="titulo-campo">
+
 Profissional responsável
+
 </label>
 
 <input
@@ -1402,7 +1777,9 @@ Profissional responsável
 <div class="campo">
 
 <label class="titulo-campo">
+
 Valor combinado — R$
+
 </label>
 
 <input
@@ -1463,7 +1840,7 @@ Li e concordo com a declaração acima *
 
 
 <!-- =====================================================
-     AUTORIZAÇÃO DE IMAGEM
+     USO DE IMAGEM
 ===================================================== -->
 
 <div class="secao">
@@ -1476,7 +1853,9 @@ AUTORIZAÇÃO DE USO DE IMAGEM
 <div class="campo">
 
 <label class="titulo-campo">
+
 Autoriza divulgação da tatuagem em portfólio/redes?
+
 </label>
 
 
@@ -1488,162 +1867,4 @@ Autoriza divulgação da tatuagem em portfólio/redes?
 <input
     type="radio"
     name="Uso de imagem"
-    value="AUTORIZO"
-    required
->
-
-AUTORIZO
-
-</label>
-
-
-
-<label class="opcao">
-
-<input
-    type="radio"
-    name="Uso de imagem"
-    value="NAO AUTORIZO"
->
-
-NAO AUTORIZO
-
-</label>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     ASSINATURA
-===================================================== -->
-
-<div class="secao">
-
-<h2>
-ASSINATURA
-</h2>
-
-
-
-<div class="campo">
-
-<label class="titulo-campo">
-Nome completo (assinatura por extenso) *
-</label>
-
-<input
-    type="text"
-    name="Nome da assinatura"
-    required
->
-
-</div>
-
-
-
-<div class="campo">
-
-<label class="titulo-campo">
-Data *
-</label>
-
-<input
-    type="date"
-    name="Data da assinatura"
-    id="dataAssinatura"
-    required
->
-
-</div>
-
-
-
-<!-- ASSINATURA CLIENTE -->
-
-<div class="assinatura-area">
-
-<label>
-Assinatura do cliente (desenhe no quadro)
-</label>
-
-<canvas
-    id="assinaturaCliente"
-></canvas>
-
-<button
-    type="button"
-    class="botao-limpar"
-    onclick="limparAssinatura('assinaturaCliente')"
->
-LIMPAR
-</button>
-
-</div>
-
-
-
-<!-- ASSINATURA RESPONSÁVEL -->
-
-<div class="assinatura-area">
-
-<label>
-Assinatura do responsável (se menor de 18 anos)
-</label>
-
-<canvas
-    id="assinaturaResponsavel"
-></canvas>
-
-<button
-    type="button"
-    class="botao-limpar"
-    onclick="limparAssinatura('assinaturaResponsavel')"
->
-LIMPAR
-</button>
-
-</div>
-
-
-</div>
-
-
-
-<!-- ENVIAR -->
-
-<button
-    type="submit"
-    class="botao-enviar"
-    id="botaoEnviar"
->
-ENVIAR
-</button>
-
-
-
-<div class="rodape">
-
-Nunca envie senhas pelo Formulários.<br>
-
-Conteúdo protegido pela LGPD.
-
-</div>
-
-
-</form>
-
-</section>
-
-
-
-<script>
-
-
-/* =====================================================
-   ABRIR
+    value="AUTO
