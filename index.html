@@ -2,8 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#090909">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ficha de Anamnese — Tatuagem</title>
 
@@ -31,7 +30,7 @@ body {
 }
 
 /* =========================
-   CAPA
+   CAPA — MANTIDA
 ========================= */
 
 #capa {
@@ -111,7 +110,12 @@ body {
     line-height: 1.8;
 }
 
+/* BOTÃO DA CAPA */
 .botao-capa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     border: 1px solid #777;
     background: transparent;
     color: white;
@@ -119,6 +123,7 @@ body {
     min-height: 52px;
     width: 100%;
     max-width: 280px;
+    margin: auto;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     letter-spacing: 2px;
@@ -133,7 +138,7 @@ body {
 }
 
 /* =========================
-   FORMULÁRIO
+   ABERTURA DA FICHA
 ========================= */
 
 #formularioPagina {
@@ -141,6 +146,30 @@ body {
     min-height: 100vh;
     padding-bottom: 40px;
 }
+
+/*
+   A ficha aparece quando o botão da capa
+   leva para #formularioPagina.
+*/
+#formularioPagina:target {
+    display: block;
+}
+
+#formularioPagina:target ~ .mensagem {
+    display: none;
+}
+
+/*
+   Quando a ficha está aberta,
+   a capa desaparece.
+*/
+body:has(#formularioPagina:target) #capa {
+    display: none;
+}
+
+/* =========================
+   TOPO DA FICHA
+========================= */
 
 .form-topo {
     padding: 35px 18px 25px;
@@ -163,7 +192,8 @@ body {
     padding: 10px 15px;
 }
 
-.voltar:hover {
+.voltar:hover,
+.voltar:active {
     color: white;
 }
 
@@ -196,7 +226,7 @@ body {
 }
 
 /* =========================
-   BLOCOS
+   SEÇÕES
 ========================= */
 
 .secao {
@@ -258,19 +288,17 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="number"],
-textarea,
-select {
+textarea {
     width: 100%;
     min-height: 50px;
     border: 1px solid #3a3a3a;
-    border-radius: 0;
     background: #090909;
     color: white;
     padding: 13px 14px;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     outline: none;
-    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 textarea {
@@ -279,8 +307,7 @@ textarea {
 }
 
 input:focus,
-textarea:focus,
-select:focus {
+textarea:focus {
     border-color: #aaa;
 }
 
@@ -290,7 +317,7 @@ textarea::placeholder {
 }
 
 /* =========================
-   RADIO / SIM NÃO
+   SIM / NÃO
 ========================= */
 
 .pergunta {
@@ -480,7 +507,7 @@ canvas {
 }
 
 /* =========================
-   BOTÃO ENVIAR
+   ENVIAR
 ========================= */
 
 .botao-enviar {
@@ -516,14 +543,14 @@ canvas {
     font-size: 9px;
     line-height: 1.7;
     padding: 30px 10px;
-    text-transform: none;
 }
 
 /* =========================
-   DESKTOP / TABLET
+   RESPONSIVO
 ========================= */
 
 @media (min-width: 700px) {
+
     .form-container {
         padding: 30px 25px 60px;
     }
@@ -542,63 +569,14 @@ canvas {
         grid-column: 1 / -1;
     }
 }
-
-/* =========================
-   MENSAGEM
-========================= */
-
-.mensagem {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.94);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-}
-
-.mensagem-caixa {
-    width: 100%;
-    max-width: 400px;
-    border: 1px solid #444;
-    background: #111;
-    padding: 35px 25px;
-    text-align: center;
-}
-
-.mensagem-caixa h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.mensagem-caixa p {
-    color: #aaa;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.mensagem-caixa button {
-    margin-top: 25px;
-    width: 100%;
-    min-height: 50px;
-    border: 1px solid #eee;
-    background: #eee;
-    color: #111;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
+<!-- ==================================================
      CAPA
-========================= -->
+================================================== -->
 
 <section id="capa">
 
@@ -622,25 +600,27 @@ canvas {
             Responda com atenção e sinceridade.
         </p>
 
-        <button type="button" class="botao-capa" onclick="abrirFicha()">
+        <!-- AGORA É UM LINK, NÃO DEPENDE DO JAVASCRIPT -->
+        <a href="#formularioPagina" class="botao-capa">
             PREENCHER FICHA
-        </button>
+        </a>
 
     </div>
+
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      FORMULÁRIO
-========================= -->
+================================================== -->
 
 <section id="formularioPagina">
 
     <header class="form-topo">
 
-        <button type="button" class="voltar" onclick="voltarCapa()">
+        <a href="#" class="voltar">
             ← VOLTAR
-        </button>
+        </a>
 
         <h1 class="form-titulo">
             Ficha de Anamnese
@@ -660,22 +640,28 @@ canvas {
             id="tattooForm"
             action="https://formsubmit.co/camittt26@gmail.com"
             method="POST"
-            enctype="multipart/form-data"
         >
 
-            <!-- CONFIGURAÇÕES DO ENVIO -->
+            <input type="hidden" name="_subject"
+                   value="Nova Ficha de Anamnese — Tatuagem">
 
-            <input type="hidden" name="_subject" value="Nova Ficha de Anamnese — Tatuagem">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_url" value="">
-            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_template"
+                   value="table">
+
+            <input type="hidden" name="_captcha"
+                   value="false">
+
+            <input type="text" name="_honey"
+                   style="display:none">
+
 
             <!-- INTRODUÇÃO -->
 
             <section class="secao">
 
-                <h2 class="secao-titulo">Ficha de Anamnese</h2>
+                <h2 class="secao-titulo">
+                    Ficha de Anamnese
+                </h2>
 
                 <p class="intro">
                     Esta ficha tem como objetivo garantir sua segurança e a qualidade
@@ -685,7 +671,8 @@ canvas {
                 </p>
 
                 <p class="intro">
-                    <span class="asterisco">*</span> Indica uma pergunta obrigatória
+                    <span class="asterisco">*</span>
+                    Indica uma pergunta obrigatória
                 </p>
 
             </section>
@@ -695,157 +682,183 @@ canvas {
 
             <section class="secao">
 
-                <h2 class="secao-titulo">Dados Pessoais</h2>
+                <h2 class="secao-titulo">
+                    Dados Pessoais
+                </h2>
 
-                <p class="secao-subtitulo">Obrigatório</p>
-
-                <div class="dados-grid">
-
-                    <div class="campo campo-full">
-                        <label for="nome">
-                            Nome completo *
-                        </label>
-
-                        <input
-                            id="nome"
-                            name="Nome completo"
-                            type="text"
-                            required
-                            autocomplete="name"
-                        >
-                    </div>
+                <p class="secao-subtitulo">
+                    Obrigatório
+                </p>
 
 
-                    <div class="campo">
-                        <label for="email">
-                            E-mail *
-                        </label>
+                <div class="campo">
 
-                        <input
-                            id="email"
-                            name="E-mail"
-                            type="email"
-                            required
-                            autocomplete="email"
-                        >
-                    </div>
+                    <label>
+                        Nome completo *
+                    </label>
 
+                    <input
+                        type="text"
+                        name="Nome completo"
+                        required
+                    >
 
-                    <div class="campo">
-                        <label for="telefone">
-                            Telefone *
-                        </label>
-
-                        <input
-                            id="telefone"
-                            name="Telefone"
-                            type="tel"
-                            required
-                            autocomplete="tel"
-                        >
-                    </div>
+                </div>
 
 
-                    <div class="campo campo-full">
-                        <label for="endereco">
-                            Endereço — Rua, número, bairro, cidade
-                        </label>
+                <div class="campo">
 
-                        <input
-                            id="endereco"
-                            name="Endereço"
-                            type="text"
-                        >
-                    </div>
+                    <label>
+                        E-mail *
+                    </label>
 
+                    <input
+                        type="email"
+                        name="E-mail"
+                        required
+                    >
 
-                    <div class="campo">
-                        <label for="nascimento">
-                            Data de nascimento *
-                        </label>
-
-                        <input
-                            id="nascimento"
-                            name="Data de nascimento"
-                            type="date"
-                            required
-                        >
-                    </div>
+                </div>
 
 
-                    <div class="campo">
-                        <label for="rg">
-                            RG
-                        </label>
+                <div class="campo">
 
-                        <input
-                            id="rg"
-                            name="RG"
-                            type="text"
-                        >
-                    </div>
+                    <label>
+                        Telefone *
+                    </label>
 
+                    <input
+                        type="tel"
+                        name="Telefone"
+                        required
+                    >
 
-                    <div class="campo">
-                        <label for="cpf">
-                            CPF
-                        </label>
-
-                        <input
-                            id="cpf"
-                            name="CPF"
-                            type="text"
-                        >
-                    </div>
+                </div>
 
 
-                    <div class="campo">
-                        <label for="dataSessao">
-                            Data da sessão
-                        </label>
+                <div class="campo">
 
-                        <input
-                            id="dataSessao"
-                            name="Data da sessão"
-                            type="date"
-                        >
-                    </div>
+                    <label>
+                        Endereço — Rua, número, bairro, cidade
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Endereço"
+                    >
+
+                </div>
 
 
-                    <div class="campo campo-full">
+                <div class="campo">
+
+                    <label>
+                        Data de nascimento *
+                    </label>
+
+                    <input
+                        type="date"
+                        name="Data de nascimento"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        RG
+                    </label>
+
+                    <input
+                        type="text"
+                        name="RG"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        name="CPF"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Data da sessão
+                    </label>
+
+                    <input
+                        type="date"
+                        name="Data da sessão"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Como nos conheceu?
+                    </label>
+
+                    <div class="radio-lista">
 
                         <label>
-                            Como nos conheceu?
+                            <input
+                                type="radio"
+                                name="Como nos conheceu"
+                                value="Facebook"
+                            >
+                            <span>Facebook</span>
                         </label>
 
-                        <div class="radio-lista">
+                        <label>
+                            <input
+                                type="radio"
+                                name="Como nos conheceu"
+                                value="Instagram"
+                            >
+                            <span>Instagram</span>
+                        </label>
 
-                            <label>
-                                <input type="radio" name="Como nos conheceu" value="Facebook">
-                                <span>Facebook</span>
-                            </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="Como nos conheceu"
+                                value="Indicação de amigo"
+                            >
+                            <span>Indicação de amigo</span>
+                        </label>
 
-                            <label>
-                                <input type="radio" name="Como nos conheceu" value="Instagram">
-                                <span>Instagram</span>
-                            </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="Como nos conheceu"
+                                value="Google"
+                            >
+                            <span>Google</span>
+                        </label>
 
-                            <label>
-                                <input type="radio" name="Como nos conheceu" value="Indicação de amigo">
-                                <span>Indicação de amigo</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="Como nos conheceu" value="Google">
-                                <span>Google</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="Como nos conheceu" value="Outros">
-                                <span>Outros</span>
-                            </label>
-
-                        </div>
+                        <label>
+                            <input
+                                type="radio"
+                                name="Como nos conheceu"
+                                value="Outros"
+                            >
+                            <span>Outros:</span>
+                        </label>
 
                     </div>
 
@@ -854,7 +867,9 @@ canvas {
             </section>
 
 
-            <!-- AVALIAÇÃO DE SAÚDE -->
+            <!-- ==================================================
+                 AVALIAÇÃO DE SAÚDE
+            ================================================== -->
 
             <section class="secao">
 
@@ -871,17 +886,15 @@ canvas {
                 </p>
 
 
-                <!-- PERGUNTAS -->
+                <!-- FUNÇÃO VISUAL SIM/NÃO -->
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Alergia?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Alergia" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Alergia" value="Sim">
                             <span>SIM</span>
@@ -894,13 +907,11 @@ canvas {
                     <div class="pergunta-titulo">
                         Epilepsia (tremores, espasmos, desmaios recorrentes)?
                     </div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Epilepsia" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Epilepsia" value="Sim">
                             <span>SIM</span>
@@ -911,13 +922,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Hipertensão?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Hipertensão" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Hipertensão" value="Sim">
                             <span>SIM</span>
@@ -928,13 +937,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Queloide?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Queloide" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Queloide" value="Sim">
                             <span>SIM</span>
@@ -945,13 +952,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Diabetes?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Diabetes" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Diabetes" value="Sim">
                             <span>SIM</span>
@@ -962,13 +967,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Doença autoimune?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Doença autoimune" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Doença autoimune" value="Sim">
                             <span>SIM</span>
@@ -979,13 +982,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Problemas de coagulação?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Problemas de coagulação" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Problemas de coagulação" value="Sim">
                             <span>SIM</span>
@@ -996,13 +997,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Gestante?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Gestante" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Gestante" value="Sim">
                             <span>SIM</span>
@@ -1013,13 +1012,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Lactante?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Lactante" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Lactante" value="Sim">
                             <span>SIM</span>
@@ -1030,13 +1027,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Cardiopatia?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Cardiopatia" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Cardiopatia" value="Sim">
                             <span>SIM</span>
@@ -1047,13 +1042,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Anemia?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Anemia" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Anemia" value="Sim">
                             <span>SIM</span>
@@ -1064,13 +1057,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Doença de pele?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Doença de pele" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Doença de pele" value="Sim">
                             <span>SIM</span>
@@ -1081,13 +1072,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Remédio para Acne?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Remédio para Acne" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Remédio para Acne" value="Sim">
                             <span>SIM</span>
@@ -1097,14 +1086,14 @@ canvas {
 
 
                 <div class="pergunta">
-                    <div class="pergunta-titulo">Possui condição que possa interferir?</div>
-
+                    <div class="pergunta-titulo">
+                        Possui condição que possa interferir?
+                    </div>
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Possui condição que possa interferir" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Possui condição que possa interferir" value="Sim">
                             <span>SIM</span>
@@ -1114,14 +1103,14 @@ canvas {
 
 
                 <div class="pergunta">
-                    <div class="pergunta-titulo">Possui algum problema não citado?</div>
-
+                    <div class="pergunta-titulo">
+                        Possui algum problema não citado?
+                    </div>
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Possui algum problema não citado" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Possui algum problema não citado" value="Sim">
                             <span>SIM</span>
@@ -1132,13 +1121,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">É fumante?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="É fumante" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="É fumante" value="Sim">
                             <span>SIM</span>
@@ -1149,13 +1136,11 @@ canvas {
 
                 <div class="pergunta">
                     <div class="pergunta-titulo">Queda de pressão?</div>
-
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Queda de pressão" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Queda de pressão" value="Sim">
                             <span>SIM</span>
@@ -1165,14 +1150,14 @@ canvas {
 
 
                 <div class="pergunta">
-                    <div class="pergunta-titulo">Está em período menstrual?</div>
-
+                    <div class="pergunta-titulo">
+                        Está em período menstrual?
+                    </div>
                     <div class="opcoes">
                         <label class="opcao">
                             <input type="radio" name="Está em período menstrual" value="Não" required>
                             <span>NÃO</span>
                         </label>
-
                         <label class="opcao">
                             <input type="radio" name="Está em período menstrual" value="Sim">
                             <span>SIM</span>
@@ -1183,7 +1168,9 @@ canvas {
             </section>
 
 
-            <!-- INFORMAÇÕES COMPLEMENTARES -->
+            <!-- ==================================================
+                 INFORMAÇÕES COMPLEMENTARES
+            ================================================== -->
 
             <section class="secao">
 
@@ -1191,127 +1178,98 @@ canvas {
                     Informações Complementares
                 </h2>
 
+
                 <div class="campo">
 
-                    <label for="alergias">
+                    <label>
                         Alergias conhecidas (medicamentos, alimentos, látex, etc.)
                     </label>
 
-                    <textarea
-                        id="alergias"
-                        name="Alergias conhecidas"
-                    ></textarea>
+                    <textarea name="Alergias conhecidas"></textarea>
 
                 </div>
 
 
                 <div class="campo">
 
-                    <label for="medicamentos">
+                    <label>
                         Medicamentos em uso atualmente
                     </label>
 
-                    <textarea
-                        id="medicamentos"
-                        name="Medicamentos em uso atualmente"
-                    ></textarea>
+                    <textarea name="Medicamentos em uso atualmente"></textarea>
 
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Está em tratamento dermatológico?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está em tratamento dermatológico"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Está em tratamento dermatológico"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está em tratamento dermatológico"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Está em tratamento dermatológico"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Fez algum procedimento recente (cirurgia, botox, peeling)?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Procedimento recente"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Procedimento recente"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Procedimento recente"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Procedimento recente"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Teve exposição solar intensa nos últimos 7 dias?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Exposição solar intensa"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Exposição solar intensa"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Exposição solar intensa"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Exposição solar intensa"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
@@ -1325,183 +1283,141 @@ canvas {
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está se sentindo bem hoje"
-                                value="Sim"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Está se sentindo bem hoje"
+                                   value="Sim"
+                                   required>
                             <span>SIM</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está se sentindo bem hoje"
-                                value="Não"
-                            >
+                            <input type="radio"
+                                   name="Está se sentindo bem hoje"
+                                   value="Não">
                             <span>NÃO</span>
                         </label>
-
                     </div>
 
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Se alimentou nas últimas 4 horas?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Se alimentou nas últimas 4 horas"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Se alimentou nas últimas 4 horas"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Se alimentou nas últimas 4 horas"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Se alimentou nas últimas 4 horas"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Está hidratado(a)?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está hidratado(a)"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Está hidratado(a)"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Está hidratado(a)"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Está hidratado(a)"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Ingeriu bebida alcoólica nas últimas 24h?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Bebida alcoólica nas últimas 24h"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Bebida alcoólica nas últimas 24h"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Bebida alcoólica nas últimas 24h"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Bebida alcoólica nas últimas 24h"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="pergunta">
-
                     <div class="pergunta-titulo">
                         Fez uso de substância (drogas) recentemente?
                     </div>
 
                     <div class="opcoes">
-
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Uso de substância recentemente"
-                                value="Não"
-                                required
-                            >
+                            <input type="radio"
+                                   name="Uso de substância recentemente"
+                                   value="Não"
+                                   required>
                             <span>NÃO</span>
                         </label>
 
                         <label class="opcao">
-                            <input
-                                type="radio"
-                                name="Uso de substância recentemente"
-                                value="Sim"
-                            >
+                            <input type="radio"
+                                   name="Uso de substância recentemente"
+                                   value="Sim">
                             <span>SIM</span>
                         </label>
-
                     </div>
-
                 </div>
 
 
                 <div class="campo">
 
-                    <label for="informacaoImportante">
+                    <label>
                         Há alguma informação importante que devemos saber?
                     </label>
 
-                    <textarea
-                        id="informacaoImportante"
-                        name="Informação importante"
-                    ></textarea>
+                    <textarea name="Informação importante"></textarea>
 
                 </div>
 
 
                 <div class="campo">
 
-                    <label for="local">
+                    <label>
                         Local do corpo a ser tatuado
                     </label>
 
                     <input
-                        id="local"
-                        name="Local do corpo a ser tatuado"
                         type="text"
+                        name="Local do corpo a ser tatuado"
                         placeholder="Ex: antebraço direito, costas..."
                     >
 
@@ -1510,12 +1426,11 @@ canvas {
 
                 <div class="campo">
 
-                    <label for="descricao">
+                    <label>
                         Descrição da arte
                     </label>
 
                     <textarea
-                        id="descricao"
                         name="Descrição da arte"
                         placeholder="Tamanho aproximado, referências, estilo"
                     ></textarea>
@@ -1525,14 +1440,13 @@ canvas {
 
                 <div class="campo">
 
-                    <label for="profissional">
+                    <label>
                         Profissional responsável
                     </label>
 
                     <input
-                        id="profissional"
-                        name="Profissional responsável"
                         type="text"
+                        name="Profissional responsável"
                     >
 
                 </div>
@@ -1540,14 +1454,13 @@ canvas {
 
                 <div class="campo">
 
-                    <label for="valor">
+                    <label>
                         Valor combinado — R$
                     </label>
 
                     <input
-                        id="valor"
-                        name="Valor combinado"
                         type="number"
+                        name="Valor combinado"
                         step="0.01"
                         min="0"
                     >
@@ -1557,13 +1470,16 @@ canvas {
             </section>
 
 
-            <!-- DECLARAÇÃO -->
+            <!-- ==================================================
+                 DECLARAÇÃO
+            ================================================== -->
 
             <section class="secao">
 
                 <h2 class="secao-titulo">
                     Declaração
                 </h2>
+
 
                 <div class="declaracao">
 
@@ -1603,7 +1519,9 @@ canvas {
             </section>
 
 
-            <!-- AUTORIZAÇÃO -->
+            <!-- ==================================================
+                 USO DE IMAGEM
+            ================================================== -->
 
             <section class="secao">
 
@@ -1619,29 +1537,23 @@ canvas {
                 <div class="opcoes">
 
                     <label class="opcao">
-
                         <input
                             type="radio"
                             name="Autorização de uso de imagem"
                             value="AUTORIZO"
                             required
                         >
-
                         <span>AUTORIZO</span>
-
                     </label>
 
 
                     <label class="opcao">
-
                         <input
                             type="radio"
                             name="Autorização de uso de imagem"
                             value="NAO AUTORIZO"
                         >
-
                         <span>NAO AUTORIZO</span>
-
                     </label>
 
                 </div>
@@ -1649,7 +1561,9 @@ canvas {
             </section>
 
 
-            <!-- ASSINATURA -->
+            <!-- ==================================================
+                 ASSINATURA
+            ================================================== -->
 
             <section class="secao">
 
@@ -1660,14 +1574,13 @@ canvas {
 
                 <div class="campo">
 
-                    <label for="nomeAssinatura">
+                    <label>
                         Nome completo (assinatura por extenso) *
                     </label>
 
                     <input
-                        id="nomeAssinatura"
-                        name="Nome completo da assinatura"
                         type="text"
+                        name="Nome completo da assinatura"
                         required
                     >
 
@@ -1676,14 +1589,14 @@ canvas {
 
                 <div class="campo">
 
-                    <label for="dataAssinatura">
+                    <label>
                         Data *
                     </label>
 
                     <input
-                        id="dataAssinatura"
-                        name="Data da assinatura"
                         type="date"
+                        name="Data da assinatura"
+                        id="dataAssinatura"
                         required
                     >
 
@@ -1705,7 +1618,7 @@ canvas {
                         <button
                             type="button"
                             class="limpar"
-                            onclick="limparCanvas('assinaturaCliente')"
+                            onclick="limparAssinatura('assinaturaCliente')"
                         >
                             LIMPAR
                         </button>
@@ -1740,7 +1653,7 @@ canvas {
                         <button
                             type="button"
                             class="limpar"
-                            onclick="limparCanvas('assinaturaResponsavel')"
+                            onclick="limparAssinatura('assinaturaResponsavel')"
                         >
                             LIMPAR
                         </button>
@@ -1770,13 +1683,14 @@ canvas {
 
             </section>
 
-
         </form>
 
 
         <footer class="rodape">
+
             Nunca envie senhas pelo Formulários.<br>
             Conteúdo protegido pela LGPD.
+
         </footer>
 
     </main>
@@ -1784,158 +1698,109 @@ canvas {
 </section>
 
 
-<!-- =========================
-     MENSAGEM DE SUCESSO
-========================= -->
-
-<div class="mensagem" id="mensagem">
-
-    <div class="mensagem-caixa">
-
-        <h2>Ficha enviada</h2>
-
-        <p>
-            Suas informações foram enviadas com sucesso.
-            Obrigado pelo preenchimento.
-        </p>
-
-        <button type="button" onclick="fecharMensagem()">
-            FECHAR
-        </button>
-
-    </div>
-
-</div>
-
-
 <script>
 
-/* =========================
-   NAVEGAÇÃO
-========================= */
+/* ==================================================
+   DATA AUTOMÁTICA
+================================================== */
 
-function abrirFicha() {
+window.addEventListener("load", function() {
 
-    document.getElementById("capa").style.display = "none";
-    document.getElementById("formularioPagina").style.display = "block";
+    const data = new Date();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-}
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
 
+    document.getElementById("dataAssinatura").value =
+        ano + "-" + mes + "-" + dia;
 
-function voltarCapa() {
-
-    document.getElementById("formularioPagina").style.display = "none";
-    document.getElementById("capa").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-}
+});
 
 
-/* =========================
-   CANVAS DE ASSINATURA
-========================= */
+/* ==================================================
+   ASSINATURAS
+================================================== */
 
-const canvases = {};
-
-function prepararCanvas(id) {
+function prepararAssinatura(id) {
 
     const canvas = document.getElementById(id);
     const ctx = canvas.getContext("2d");
 
-    function ajustarTamanho() {
+    function tamanho() {
 
-        const rect = canvas.getBoundingClientRect();
+        const largura = canvas.parentElement.clientWidth;
 
-        const imagemAnterior =
-            canvas.width > 0 && canvas.height > 0
-                ? canvas.toDataURL()
-                : null;
-
-        canvas.width = rect.width;
+        canvas.width = largura;
         canvas.height = 190;
 
         ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 2.2;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
-
-        if (imagemAnterior) {
-
-            const img = new Image();
-
-            img.onload = function() {
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            };
-
-            img.src = imagemAnterior;
-        }
     }
 
+    tamanho();
 
-    ajustarTamanho();
+    window.addEventListener("resize", tamanho);
 
 
     let desenhando = false;
 
 
-    function posicao(e) {
+    function posicao(evento) {
 
         const rect = canvas.getBoundingClientRect();
 
-        if (e.touches && e.touches.length) {
+        if (evento.touches && evento.touches.length > 0) {
 
             return {
-                x: e.touches[0].clientX - rect.left,
-                y: e.touches[0].clientY - rect.top
+                x: evento.touches[0].clientX - rect.left,
+                y: evento.touches[0].clientY - rect.top
             };
 
         }
 
         return {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
+            x: evento.clientX - rect.left,
+            y: evento.clientY - rect.top
         };
     }
 
 
-    function iniciar(e) {
+    function iniciar(evento) {
 
-        e.preventDefault();
+        evento.preventDefault();
 
         desenhando = true;
 
-        const p = posicao(e);
+        const p = posicao(evento);
 
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
     }
 
 
-    function desenhar(e) {
+    function desenhar(evento) {
 
         if (!desenhando) return;
 
-        e.preventDefault();
+        evento.preventDefault();
 
-        const p = posicao(e);
+        const p = posicao(evento);
 
         ctx.lineTo(p.x, p.y);
         ctx.stroke();
     }
 
 
-    function terminar(e) {
+    function terminar(evento) {
 
         if (!desenhando) return;
 
-        if (e) e.preventDefault();
+        if (evento) {
+            evento.preventDefault();
+        }
 
         desenhando = false;
 
@@ -1964,88 +1829,56 @@ function prepararCanvas(id) {
         passive: false
     });
 
-
-    canvases[id] = {
-        canvas: canvas,
-        ctx: ctx
-    };
 }
 
 
-function limparCanvas(id) {
+prepararAssinatura("assinaturaCliente");
+prepararAssinatura("assinaturaResponsavel");
 
-    const item = canvases[id];
 
-    if (!item) return;
+/* ==================================================
+   LIMPAR ASSINATURA
+================================================== */
 
-    item.ctx.clearRect(
+function limparAssinatura(id) {
+
+    const canvas = document.getElementById(id);
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(
         0,
         0,
-        item.canvas.width,
-        item.canvas.height
+        canvas.width,
+        canvas.height
     );
 
-    document.getElementById(
-        id + "Dados"
-    ).value = "";
+    document.getElementById(id + "Dados").value = "";
+
 }
 
 
-/* =========================
-   INICIALIZAR ASSINATURAS
-========================= */
+/* ==================================================
+   ANTES DE ENVIAR
+================================================== */
 
-window.addEventListener("load", function() {
+document.getElementById("tattooForm")
+.addEventListener("submit", function(event) {
 
-    prepararCanvas("assinaturaCliente");
-    prepararCanvas("assinaturaResponsavel");
+    const cliente =
+        document.getElementById("assinaturaCliente");
 
-    const hoje = new Date();
-
-    const ano = hoje.getFullYear();
-    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-    const dia = String(hoje.getDate()).padStart(2, "0");
-
-    const dataAtual = `${ano}-${mes}-${dia}`;
-
-    document.getElementById("dataAssinatura").value = dataAtual;
-
-});
+    const responsavel =
+        document.getElementById("assinaturaResponsavel");
 
 
-/* =========================
-   SALVAR ASSINATURAS
-========================= */
-
-function salvarAssinatura(idCanvas, idCampo) {
-
-    const canvas = document.getElementById(idCanvas);
-
-    const dados = canvas.toDataURL("image/png");
-
-    document.getElementById(idCampo).value = dados;
-}
+    document.getElementById("assinaturaClienteDados").value =
+        cliente.toDataURL("image/png");
 
 
-/* =========================
-   ENVIO
-========================= */
+    document.getElementById("assinaturaResponsavelDados").value =
+        responsavel.toDataURL("image/png");
 
-const formulario =
-    document.getElementById("tattooForm");
-
-
-formulario.addEventListener("submit", function(e) {
-
-    salvarAssinatura(
-        "assinaturaCliente",
-        "assinaturaClienteDados"
-    );
-
-    salvarAssinatura(
-        "assinaturaResponsavel",
-        "assinaturaResponsavelDados"
-    );
 
     const botao =
         document.getElementById("botaoEnviar");
@@ -2055,17 +1888,6 @@ formulario.addEventListener("submit", function(e) {
     botao.innerText = "ENVIANDO...";
 
 });
-
-
-/* =========================
-   MENSAGEM
-========================= */
-
-function fecharMensagem() {
-
-    document.getElementById("mensagem").style.display = "none";
-
-}
 
 </script>
 
