@@ -3,195 +3,1078 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha de Anamnese | Cami tattoo</title>
+
+  <title>Ficha de Anamnese — Tatuagem</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --preto: #171717;
+      --cinza: #6d6a67;
+      --cinza-claro: #e5e1dc;
+      --fundo: #f7f5f2;
+      --branco: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      padding: 20px;
-      background: #f5f5f5;
-      color: #222;
-      font-family: Arial, sans-serif;
+      background: #d9d5d1;
+      color: var(--preto);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
     }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 28px 22px;
-      border-radius: 14px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-    }
+    /* =========================
+       CAPA
+    ========================= */
 
-    h1 {
+    .capa {
+      min-height: 100vh;
+      min-height: 100svh;
+      background:
+        radial-gradient(circle at center, #292929 0%, #181818 45%, #0d0d0d 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      margin: 0 0 6px;
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+    }
+
+    .capa::before {
+      content: "";
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+    }
+
+    .capa::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+
+    .capa-conteudo {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .pequeno-titulo {
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 32px;
+    }
+
+    .linha-capa {
+      width: 65px;
+      height: 1px;
+      background: rgba(255,255,255,.65);
+      margin: 0 auto 32px;
+    }
+
+    .capa h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(45px, 9vw, 80px);
+      line-height: .92;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .capa h1 span {
+      display: block;
+      font-size: .58em;
+      margin-top: 15px;
+      letter-spacing: 5px;
+    }
+
+    .capa-descricao {
+      margin-top: 35px;
+      color: #bcbcbc;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .botao-iniciar {
+      margin-top: 60px;
+      padding: 15px 42px;
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.45);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .botao-iniciar:hover {
+      background: white;
+      color: #111;
+    }
+
+    /* =========================
+       FICHA
+    ========================= */
+
+    .ficha {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--fundo);
+      min-height: 100vh;
+    }
+
+    .ficha.aberta {
+      display: block;
+    }
+
+    .cabecalho {
+      background: #171717;
+      color: white;
+      text-align: center;
+      padding: 38px 25px;
+    }
+
+    .cabecalho h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .conteudo {
+      padding: 50px 55px 70px;
+    }
+
+    /* =========================
+       SEÇÕES
+    ========================= */
+
+    .secao {
+      margin-bottom: 48px;
+    }
+
+    .titulo-secao {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .numero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: #777;
+    }
+
+    .titulo-secao h2 {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 28px;
-      letter-spacing: 1px;
+      font-weight: 500;
+      letter-spacing: .5px;
+      white-space: nowrap;
     }
 
-    .subtitle {
-      text-align: center;
-      margin-bottom: 28px;
-      color: #666;
-      font-size: 14px;
+    .titulo-secao .linha {
+      flex: 1;
+      height: 1px;
+      background: #d4d0cc;
     }
 
-    h2 {
-      font-size: 18px;
-      margin-top: 28px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #ddd;
+    /* =========================
+       CAMPOS
+    ========================= */
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 23px 26px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .campo.largo {
+      grid-column: 1 / -1;
     }
 
     label {
-      display: block;
-      margin-top: 16px;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #555;
       margin-bottom: 7px;
-      font-weight: bold;
-      font-size: 14px;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      background: #fff;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #aaa;
+      border-radius: 0;
+      outline: none;
+      padding: 9px 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #222;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-bottom-color: #171717;
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 75px;
       resize: vertical;
     }
 
-    .checkbox {
+    /* =========================
+       PERGUNTAS
+    ========================= */
+
+    .pergunta {
+      margin-bottom: 25px;
+    }
+
+    .pergunta-texto {
+      font-size: 11px;
+      color: #333;
+      margin-bottom: 11px;
+    }
+
+    .opcoes {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .opcao {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #444;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .opcao input {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      accent-color: #171717;
+    }
+
+    /* =========================
+       AVISO
+    ========================= */
+
+    .aviso {
+      background: #ebe8e4;
+      border-left: 2px solid #222;
+      padding: 19px 21px;
+      margin: 35px 0 48px;
+      color: #555;
+      font-size: 9px;
+      line-height: 1.8;
+    }
+
+    .aviso strong {
+      color: #222;
+    }
+
+    /* =========================
+       AUTORIZAÇÃO
+    ========================= */
+
+    .autorizacao {
+      border: 1px solid #d2cec9;
+      background: rgba(255,255,255,.35);
+      padding: 25px;
+    }
+
+    .autorizacao p {
+      color: #555;
+      font-size: 10px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .check {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      margin-top: 15px;
-      font-weight: normal;
-      line-height: 1.4;
-    }
-
-    .checkbox input {
-      width: auto;
-      margin-top: 3px;
-    }
-
-    .button {
-      width: 100%;
-      margin-top: 28px;
-      padding: 14px;
-      border: 0;
-      border-radius: 8px;
-      background: #111;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
+      gap: 11px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1.65;
+      color: #444;
       cursor: pointer;
+      margin-bottom: 18px;
     }
 
-    .button:hover {
-      opacity: 0.9;
+    .check:last-child {
+      margin-bottom: 0;
     }
 
-    .notice {
-      margin-top: 20px;
-      font-size: 12px;
+    .check input {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: #171717;
+    }
+
+    /* =========================
+       ASSINATURA
+    ========================= */
+
+    .assinaturas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 48px;
+    }
+
+    .linha-assinatura {
+      height: 45px;
+      border-bottom: 1px solid #555;
+    }
+
+    .legenda {
+      margin-top: 8px;
+      font-size: 8px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
       color: #666;
-      line-height: 1.5;
+    }
+
+    /* =========================
+       BOTÃO
+    ========================= */
+
+    .enviar-area {
       text-align: center;
+      margin-top: 55px;
+    }
+
+    .botao-enviar {
+      background: #171717;
+      color: white;
+      border: none;
+      padding: 17px 48px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .botao-enviar:hover {
+      background: #333;
+    }
+
+    .mensagem {
+      display: none;
+      margin: 25px auto 0;
+      max-width: 450px;
+      padding: 15px;
+      background: #e7e4df;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .rodape {
+      margin-top: 55px;
+      text-align: center;
+      color: #999;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+
+    @media (max-width: 650px) {
+
+      .capa {
+        padding: 25px;
+      }
+
+      .capa::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .capa::after {
+        width: 225px;
+        height: 225px;
+      }
+
+      .capa h1 {
+        font-size: 49px;
+      }
+
+      .capa h1 span {
+        font-size: .52em;
+        letter-spacing: 3px;
+      }
+
+      .botao-iniciar {
+        margin-top: 50px;
+      }
+
+      .cabecalho {
+        padding: 30px 18px;
+      }
+
+      .cabecalho h1 {
+        font-size: 27px;
+      }
+
+      .conteudo {
+        padding: 38px 21px 55px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 21px;
+      }
+
+      .campo.largo {
+        grid-column: auto;
+      }
+
+      .titulo-secao h2 {
+        font-size: 24px;
+      }
+
+      .titulo-secao .linha {
+        display: block;
+      }
+
+      .assinaturas {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* =========================
+       IMPRESSÃO
+    ========================= */
+
+    @media print {
+
+      body {
+        background: white;
+      }
+
+      .capa {
+        display: none !important;
+      }
+
+      .ficha {
+        display: block !important;
+        max-width: 100%;
+      }
+
+      .enviar-area {
+        display: none !important;
+      }
+
+      .conteudo {
+        padding: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <!-- =========================
+       CAPA
+  ========================= -->
 
-  <h1>Cami tattoo</h1>
-  <div class="subtitle">Ficha de Anamnese para Tatuagem</div>
+  <section class="capa" id="capa">
 
-  <form>
+    <div class="capa-conteudo">
 
-    <h2>Dados pessoais</h2>
+      <div class="pequeno-titulo">
+        Atendimento de tatuagem
+      </div>
 
-    <label for="nome">Nome completo</label>
-    <input type="text" id="nome" name="nome" required>
+      <div class="linha-capa"></div>
 
-    <label for="telefone">Telefone</label>
-    <input type="tel" id="telefone" name="telefone" required>
+      <h1>
+        Ficha de Anamnese
+        <span>— Tatuagem</span>
+      </h1>
 
-    <label for="data_nascimento">Data de nascimento</label>
-    <input type="date" id="data_nascimento" name="data_nascimento">
+      <div class="capa-descricao">
+        Informações importantes para o seu procedimento
+      </div>
 
-    <h2>Informações importantes</h2>
+      <button
+        type="button"
+        class="botao-iniciar"
+        onclick="abrirFicha()"
+      >
+        Preencher ficha
+      </button>
 
-    <label for="medicamentos">
-      Faz uso de algum medicamento?
-    </label>
-    <textarea id="medicamentos" name="medicamentos"
-      placeholder="Informe o nome do medicamento, se houver."></textarea>
-
-    <label for="alergias">
-      Possui alguma alergia?
-    </label>
-    <textarea id="alergias" name="alergias"
-      placeholder="Informe quais, se houver."></textarea>
-
-    <label for="reacoes">
-      Já teve alguma reação a produtos, cosméticos, tintas ou materiais?
-    </label>
-    <textarea id="reacoes" name="reacoes"
-      placeholder="Descreva, se houver."></textarea>
-
-    <label for="observacoes">
-      Existe alguma outra informação que você considera importante comunicar antes da tatuagem?
-    </label>
-    <textarea id="observacoes" name="observacoes"></textarea>
-
-    <h2>Autorização de imagem</h2>
-
-    <label class="checkbox">
-      <input type="checkbox" name="autorizacao_imagem">
-      <span>
-        Autorizo a Cami tattoo a fotografar e/ou filmar minha tatuagem
-        e utilizar essas imagens para divulgação do trabalho em redes
-        sociais e materiais relacionados ao trabalho, por prazo indeterminado.
-      </span>
-    </label>
-
-    <h2>Declaração</h2>
-
-    <label class="checkbox">
-      <input type="checkbox" name="declaracao" required>
-      <span>
-        Declaro que as informações fornecidas nesta ficha são verdadeiras
-        e estou ciente de que devo informar qualquer alteração ou condição
-        relevante antes da realização da tatuagem.
-      </span>
-    </label>
-
-    <button type="submit" class="button">
-      Enviar ficha
-    </button>
-
-    <div class="notice">
-      Seus dados devem ser tratados de forma privada e utilizados
-      exclusivamente para os fins relacionados ao atendimento.
     </div>
 
-  </form>
+  </section>
 
-</div>
 
-</body>
-</html>
+  <!-- =========================
+       FICHA
+  ========================= -->
+
+  <main class="ficha" id="ficha">
+
+    <header class="cabecalho">
+
+      <h1>
+        Ficha de Anamnese — Tatuagem
+      </h1>
+
+    </header>
+
+
+    <form id="formAnamnese">
+
+      <div class="conteudo">
+
+
+        <!-- DADOS PESSOAIS -->
+
+        <section class="secao">
+
+          <div class="titulo-secao">
+
+            <span class="numero">01</span>
+
+            <h2>Dados pessoais</h2>
+
+            <div class="linha"></div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="campo largo">
+
+              <label for="nome">
+                Nome completo
+              </label>
+
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+              >
+
+            </div>
+
+
+            <div class="campo">
+
+              <label for="nascimento">
+                Data de nascimento
+              </label>
+
+              <input
+                type="date"
+                id="nascimento"
+                name="nascimento"
+              >
+
+            </div>
+
+
+            <div class="campo">
+
+              <label for="telefone">
+                Telefone / WhatsApp
+              </label>
+
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                required
+              >
+
+            </div>
+
+
+            <div class="campo largo">
+
+              <label for="email">
+                E-mail
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+              >
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- TATUAGEM -->
+
+        <section class="secao">
+
+          <div class="titulo-secao">
+
+            <span class="numero">02</span>
+
+            <h2>Sobre a tatuagem</h2>
+
+            <div class="linha"></div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="campo largo">
+
+              <label for="local">
+                Local da tatuagem
+              </label>
+
+              <input
+                type="text"
+                id="local"
+                name="local"
+                required
+              >
+
+            </div>
+
+
+            <div class="campo">
+
+              <label for="tamanho">
+                Tamanho aproximado
+              </label>
+
+              <input
+                type="text"
+                id="tamanho"
+                name="tamanho"
+              >
+
+            </div>
+
+
+            <div class="campo">
+
+              <label for="dataTattoo">
+                Data do procedimento
+              </label>
+
+              <input
+                type="date"
+                id="dataTattoo"
+                name="dataTattoo"
+              >
+
+            </div>
+
+
+            <div class="campo largo">
+
+              <label for="observacoes">
+                Observações / informações importantes
+              </label>
+
+              <textarea
+                id="observacoes"
+                name="observacoes"
+              ></textarea>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <section class="secao">
+
+          <div class="titulo-secao">
+
+            <span class="numero">03</span>
+
+            <h2>Informações importantes</h2>
+
+            <div class="linha"></div>
+
+          </div>
+
+
+          <div class="pergunta">
+
+            <div class="pergunta-texto">
+              Faz uso contínuo de algum medicamento?
+            </div>
+
+            <div class="opcoes">
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="medicamento"
+                  value="Sim"
+                >
+                Sim
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="medicamento"
+                  value="Não"
+                >
+                Não
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo" style="margin-bottom:30px;">
+
+            <label for="quaisMedicamentos">
+              Se sim, quais?
+            </label>
+
+            <textarea
+              id="quaisMedicamentos"
+              name="quaisMedicamentos"
+            ></textarea>
+
+          </div>
+
+
+          <div class="pergunta">
+
+            <div class="pergunta-texto">
+              Possui alguma alergia conhecida?
+            </div>
+
+            <div class="opcoes">
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="alergia"
+                  value="Sim"
+                >
+                Sim
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="alergia"
+                  value="Não"
+                >
+                Não
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo" style="margin-bottom:30px;">
+
+            <label for="quaisAlergias">
+              Se sim, quais?
+            </label>
+
+            <textarea
+              id="quaisAlergias"
+              name="quaisAlergias"
+            ></textarea>
+
+          </div>
+
+
+          <div class="pergunta">
+
+            <div class="pergunta-texto">
+              Possui alguma condição de saúde que considere importante informar antes do procedimento?
+            </div>
+
+            <div class="opcoes">
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="condicao"
+                  value="Sim"
+                >
+                Sim
+              </label>
+
+              <label class="opcao">
+                <input
+                  type="radio"
+                  name="condicao"
+                  value="Não"
+                >
+                Não
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="detalhesSaude">
+              Se desejar, informe detalhes
+            </label>
+
+            <textarea
+              id="detalhesSaude"
+              name="detalhesSaude"
+            ></textarea>
+
+          </div>
+
+        </section>
+
+
+        <!-- AVISO -->
+
+        <div class="aviso">
+
+          <strong>Importante:</strong>
+          as informações fornecidas nesta ficha devem ser verdadeiras
+          e completas. Em caso de dúvida sobre alguma condição de saúde,
+          medicamento ou reação, informe previamente à tatuadora.
+
+        </div>
+
+
+        <!-- AUTORIZAÇÃO -->
+
+        <section class="secao">
+
+          <div class="titulo-secao">
+
+            <span class="numero">04</span>
+
+            <h2>Autorização</h2>
+
+            <div class="linha"></div>
+
+          </div>
+
+
+          <div class="autorizacao">
+
+            <p>
+              Declaro que as informações fornecidas nesta ficha são
+              verdadeiras. Estou ciente de que devo comunicar qualquer
+              alteração relevante antes da realização do procedimento.
+            </p>
+
+
+            <label class="check">
+
+              <input
+                type="checkbox"
+                name="autorizacao"
+                required
+              >
+
+              <span>
+                Autorizo a realização do procedimento de tatuagem e
+                confirmo que forneci as informações necessárias de
+                forma verdadeira.
+              </span>
+
+            </label>
+
+
+            <label class="check">
+
+              <input
+                type="checkbox"
+                name="imagem"
+              >
+
+              <span>
+                Autorizo o uso de fotografias e/ou vídeos da minha
+                tatuagem, incluindo sua execução e resultado final,
+                para divulgação nas redes sociais e portfólio da
+                tatuadora, por prazo indeterminado.
+              </span>
+
+            </label>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONFIRMAÇÃO -->
+
+        <section class="secao">
+
+          <div class="titulo-secao">
+
+            <span class="numero">05</span>
+
+            <h2>Confirmação</h2>
+
+            <div class="linha"></div>
+
+          </div>
+
+
+          <div class="assinaturas">
+
+            <div>
+
+              <div class="linha-assinatura"></div>
+
+              <div class="legenda">
+                Nome do cliente
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div class="linha-assinatura"></div>
+
+              <div class="legenda">
+                Data
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ENVIO -->
+
+        <div class="enviar-area">
+
+          <button
+            type="submit"
+            class="botao-enviar"
+          >
+            Enviar ficha
+          </button>
+
+
+          <div
+            class="mensagem"
+            id="mensagem"
+          ></div>
+
+        </div>
+
+
+        <div class="rodape">
+          Ficha de Anamnese — Tatuagem
+        </div>
+
+      </div>
+
+    </form>
+
+  </main>
+
+
+  <script>
+
+    function abrirFicha() {
+
+      document.getElementById("capa").style.display = "none";
+
+      document
+        .getElementById("ficha")
+        .classList
+        .add("aberta");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    document
+      .getElementById("formAnamnese")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const formulario = this;
+        const mensagem =
