@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ficha de Anamnese — Tatuagem</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -25,36 +28,46 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* =========================
+
+/* =====================================================
    CAPA
-========================= */
+===================================================== */
 
 #capa {
     min-height: 100vh;
     min-height: 100dvh;
     background: #080808;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 30px 20px;
 }
 
 .capa-decoracao {
     width: min(100%, 500px);
     min-height: 85vh;
+
     border: 1px solid #555;
     border-radius: 50%;
+
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 45px 35px;
 }
 
 .capa-decoracao::before {
     content: "";
+
     position: absolute;
+
     inset: 9px;
+
     border: 1px solid #333;
     border-radius: 50%;
 }
@@ -62,141 +75,218 @@ body {
 .capa-conteudo {
     position: relative;
     z-index: 2;
+
     text-align: center;
+
     width: 100%;
 }
 
 .capa-pequeno {
     font-size: 10px;
+
     letter-spacing: 4px;
+
     text-transform: uppercase;
+
     color: #aaa;
+
     margin-bottom: 22px;
 }
 
 .capa-linha {
     width: 55px;
     height: 1px;
+
     background: #777;
+
     margin: 0 auto 25px;
 }
 
 .capa-titulo {
     font-family: 'Cormorant Garamond', serif;
+
     font-size: clamp(42px, 11vw, 70px);
+
     line-height: .9;
+
     font-weight: 500;
+
     letter-spacing: -1px;
+
     color: #f2f2f2;
 }
 
 .capa-titulo span {
     display: block;
+
     font-size: .62em;
+
     margin-top: 10px;
+
     letter-spacing: 1px;
 }
 
 .capa-subtitulo {
     max-width: 290px;
+
     margin: 30px auto;
+
     font-size: 10px;
+
     line-height: 1.8;
+
     letter-spacing: 1px;
+
     color: #aaa;
+
     text-transform: uppercase;
 }
 
 .botao-capa {
     border: 1px solid #777;
+
     background: transparent;
+
     color: #eee;
+
     padding: 15px 28px;
+
     min-height: 50px;
+
     font-family: 'Montserrat', sans-serif;
+
     font-size: 11px;
+
     letter-spacing: 2px;
+
     cursor: pointer;
+
     transition: .2s;
 }
 
 .botao-capa:hover,
 .botao-capa:active {
     background: #eee;
+
     color: #080808;
 }
 
-/* =========================
+
+/* =====================================================
    FORMULÁRIO
-========================= */
+===================================================== */
 
 #formularioPagina {
     display: none;
+
     min-height: 100vh;
+
     background: #f5f5f5;
+
     color: #161616;
+
     padding-bottom: 50px;
 }
 
 .form-topo {
     background: #080808;
+
     color: white;
+
     padding: 20px;
 }
 
 .voltar {
     display: inline-flex;
+
     align-items: center;
+
     min-height: 44px;
+
     color: #ddd;
+
+    background: transparent;
+
+    border: 0;
+
     text-decoration: none;
+
+    font-family: 'Montserrat', sans-serif;
+
     font-size: 11px;
+
     letter-spacing: 1px;
+
     margin-bottom: 25px;
+
+    cursor: pointer;
+
+    padding: 0;
 }
 
 .form-topo h1 {
     margin: 0;
+
     font-family: 'Cormorant Garamond', serif;
+
     font-size: 38px;
+
     line-height: 1;
+
     font-weight: 500;
 }
 
 .form-topo p {
     margin: 12px 0 0;
+
     font-size: 10px;
+
     letter-spacing: 1px;
+
     color: #aaa;
 }
 
 form {
     width: min(100% - 28px, 760px);
+
     margin: 25px auto;
 }
 
 .intro {
     background: white;
+
     padding: 20px;
+
     border: 1px solid #ddd;
+
     margin-bottom: 20px;
+
     font-size: 12px;
+
     line-height: 1.7;
 }
 
 .secao {
     background: white;
+
     border: 1px solid #ddd;
+
     margin-bottom: 18px;
+
     padding: 20px;
 }
 
 .secao h2 {
     margin: 0 0 18px;
+
     font-family: 'Cormorant Garamond', serif;
+
     font-size: 28px;
+
     font-weight: 600;
+
     border-bottom: 1px solid #ddd;
+
     padding-bottom: 10px;
 }
 
@@ -210,13 +300,12 @@ form {
 
 label.titulo-campo {
     display: block;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
 
-.obrigatorio {
-    color: #000;
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
 }
 
 input[type="text"],
@@ -227,19 +316,29 @@ input[type="number"],
 textarea,
 select {
     width: 100%;
+
     min-height: 48px;
+
     border: 1px solid #bbb;
+
     border-radius: 3px;
+
     padding: 12px;
+
     background: #fff;
+
     color: #111;
+
     font-family: 'Montserrat', sans-serif;
+
     font-size: 13px;
+
     outline: none;
 }
 
 textarea {
     min-height: 100px;
+
     resize: vertical;
 }
 
@@ -251,36 +350,51 @@ select:focus {
 
 .duas-colunas {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 14px;
 }
 
 .radio-linha {
     display: flex;
+
     gap: 10px;
+
     flex-wrap: wrap;
 }
 
 .opcao {
     display: flex;
+
     align-items: center;
+
     gap: 7px;
+
     min-height: 44px;
+
     padding: 7px 12px;
+
     border: 1px solid #ccc;
+
     border-radius: 4px;
+
     font-size: 12px;
+
     cursor: pointer;
 }
 
 .opcao input {
     width: 18px;
+
     height: 18px;
+
     accent-color: #111;
 }
 
 .pergunta-saude {
     padding: 14px 0;
+
     border-bottom: 1px solid #eee;
 }
 
@@ -290,97 +404,163 @@ select:focus {
 
 .pergunta-saude .texto {
     font-size: 12px;
+
     font-weight: 600;
+
     margin-bottom: 9px;
 }
 
 .declaracao {
     font-size: 12px;
+
     line-height: 1.7;
+
     background: #fafafa;
+
     padding: 15px;
+
     border: 1px solid #ddd;
+
     margin-bottom: 15px;
 }
 
 .checkbox-concordo {
     display: flex;
+
     align-items: flex-start;
+
     gap: 10px;
+
     font-size: 12px;
+
     line-height: 1.5;
+
     cursor: pointer;
 }
 
 .checkbox-concordo input {
     width: 20px;
+
     height: 20px;
+
     flex-shrink: 0;
+
     margin-top: 1px;
+
     accent-color: #111;
 }
 
+
+/* =====================================================
+   ASSINATURA
+===================================================== */
+
 .assinatura-area {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .assinatura-area label {
     display: block;
+
     font-size: 12px;
+
     font-weight: 600;
+
     margin-bottom: 8px;
 }
 
 canvas {
     width: 100%;
+
     height: 180px;
-    background: #fff;
-    border: 1px solid #999;
-    border-radius: 3px;
-    touch-action: none;
+
     display: block;
+
+    background: #fff;
+
+    border: 1px solid #999;
+
+    border-radius: 3px;
+
+    touch-action: none;
+
+    cursor: crosshair;
 }
 
 .botao-limpar {
     margin-top: 8px;
+
     min-height: 42px;
+
     padding: 9px 15px;
+
     border: 1px solid #aaa;
+
     background: white;
+
     font-family: 'Montserrat', sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 1px;
+
     cursor: pointer;
 }
 
 .botao-enviar {
     width: 100%;
+
     min-height: 56px;
+
     border: 0;
+
     background: #080808;
+
     color: white;
+
     font-family: 'Montserrat', sans-serif;
+
     font-size: 12px;
+
     font-weight: 600;
+
     letter-spacing: 2px;
+
     cursor: pointer;
+}
+
+.botao-enviar:disabled {
+    opacity: .6;
+
+    cursor: wait;
 }
 
 .rodape {
     text-align: center;
+
     color: #777;
+
     font-size: 9px;
+
     line-height: 1.6;
+
     margin: 25px 10px;
 }
 
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
 @media (max-width: 600px) {
+
     .duas-colunas {
         grid-template-columns: 1fr;
     }
 
     .capa-decoracao {
         min-height: 82vh;
+
         padding: 35px 25px;
     }
 
@@ -391,17 +571,22 @@ canvas {
     .form-topo {
         padding: 18px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      CAPA
-========================= -->
+===================================================== -->
 
 <section id="capa">
+
     <div class="capa-decoracao">
 
         <div class="capa-conteudo">
@@ -413,40 +598,62 @@ canvas {
             <div class="capa-linha"></div>
 
             <div class="capa-titulo">
+
                 Ficha de
-                <span>Anamnese — Tatuagem</span>
+
+                <span>
+                    Anamnese — Tatuagem
+                </span>
+
             </div>
 
             <div class="capa-subtitulo">
                 Preenchimento obrigatório antes do procedimento
             </div>
 
-            <button type="button" class="botao-capa" onclick="abrirFicha()">
+            <button
+                type="button"
+                class="botao-capa"
+                onclick="abrirFicha()"
+            >
                 PREENCHER FICHA
             </button>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- =========================
-     FORMULÁRIO
-========================= -->
+
+<!-- =====================================================
+     FICHA
+===================================================== -->
 
 <section id="formularioPagina">
 
-    <div class="form-topo">
 
-        <button type="button" class="voltar" onclick="voltarCapa()">
-            ← VOLTAR
-        </button>
+<div class="form-topo">
 
-        <h1>Ficha de Anamnese — Tatuagem</h1>
+    <button
+        type="button"
+        class="voltar"
+        onclick="voltarCapa()"
+    >
+        ← VOLTAR
+    </button>
 
-        <p>Preenchimento obrigatório antes do procedimento</p>
+    <h1>
+        Ficha de Anamnese — Tatuagem
+    </h1>
 
-    </div>
+    <p>
+        Preenchimento obrigatório antes do procedimento
+    </p>
+
+</div>
+
 
 
 <form
@@ -455,235 +662,409 @@ canvas {
     method="POST"
 >
 
-<input type="hidden" name="_subject" value="Nova Ficha de Anamnese — Tatuagem">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="text" name="_honey" style="display:none">
 
-<input type="hidden" name="Assinatura do cliente" id="assinaturaClienteDados">
-<input type="hidden" name="Assinatura do responsável" id="assinaturaResponsavelDados">
+<input
+    type="hidden"
+    name="_subject"
+    value="Nova Ficha de Anamnese — Tatuagem"
+>
 
+<input
+    type="hidden"
+    name="_template"
+    value="table"
+>
+
+<input
+    type="hidden"
+    name="_captcha"
+    value="false"
+>
+
+<input
+    type="text"
+    name="_honey"
+    style="display:none"
+>
+
+
+<input
+    type="hidden"
+    name="Assinatura do cliente"
+    id="assinaturaClienteDados"
+>
+
+<input
+    type="hidden"
+    name="Assinatura do responsável"
+    id="assinaturaResponsavelDados"
+>
+
+
+
+<!-- =====================================================
+     INTRODUÇÃO
+===================================================== -->
 
 <div class="intro">
-    Esta ficha tem como objetivo garantir sua segurança e a qualidade do procedimento.
-    Por favor, responda com atenção e sinceridade. Todas as informações são confidenciais
-    e protegidas pela LGPD. Em caso de dúvida, converse com o tatuador antes de iniciar.
-    <br><br>
-    <strong>*</strong> Indica uma pergunta obrigatória
+
+Esta ficha tem como objetivo garantir sua segurança e a qualidade do procedimento.
+Por favor, responda com atenção e sinceridade. Todas as informações são confidenciais
+e protegidas pela LGPD. Em caso de dúvida, converse com o tatuador antes de iniciar.
+
+<br><br>
+
+<strong>*</strong> Indica uma pergunta obrigatória
+
 </div>
 
 
-<!-- =========================
+
+<!-- =====================================================
      DADOS PESSOAIS
-========================= -->
+===================================================== -->
 
 <div class="secao">
 
-<h2>DADOS PESSOAIS — Obrigatório</h2>
+<h2>
+DADOS PESSOAIS — Obrigatório
+</h2>
+
 
 <div class="campo">
-<label class="titulo-campo">Nome completo *</label>
-<input type="text" name="Nome completo" required>
+
+<label class="titulo-campo">
+Nome completo *
+</label>
+
+<input
+    type="text"
+    name="Nome completo"
+    required
+>
+
 </div>
 
-<div class="campo">
-<label class="titulo-campo">E-mail *</label>
-<input type="email" name="E-mail" required>
-</div>
+
 
 <div class="campo">
-<label class="titulo-campo">Telefone *</label>
-<input type="tel" name="Telefone" required>
+
+<label class="titulo-campo">
+E-mail *
+</label>
+
+<input
+    type="email"
+    name="E-mail"
+    required
+>
+
 </div>
 
+
+
 <div class="campo">
-<label class="titulo-campo">Endereço — Rua, número, bairro, cidade</label>
-<input type="text" name="Endereço">
+
+<label class="titulo-campo">
+Telefone *
+</label>
+
+<input
+    type="tel"
+    name="Telefone"
+    required
+>
+
 </div>
+
+
+
+<div class="campo">
+
+<label class="titulo-campo">
+Endereço — Rua, número, bairro, cidade
+</label>
+
+<input
+    type="text"
+    name="Endereço"
+>
+
+</div>
+
+
 
 <div class="duas-colunas">
 
-<div class="campo">
-<label class="titulo-campo">Data de nascimento *</label>
-<input type="date" name="Data de nascimento" required>
-</div>
 
 <div class="campo">
-<label class="titulo-campo">Data da sessão</label>
-<input type="date" name="Data da sessão">
-</div>
+
+<label class="titulo-campo">
+Data de nascimento *
+</label>
+
+<input
+    type="date"
+    name="Data de nascimento"
+    required
+>
 
 </div>
+
+
+
+<div class="campo">
+
+<label class="titulo-campo">
+Data da sessão
+</label>
+
+<input
+    type="date"
+    name="Data da sessão"
+>
+
+</div>
+
+
+</div>
+
+
 
 <div class="duas-colunas">
 
-<div class="campo">
-<label class="titulo-campo">RG</label>
-<input type="text" name="RG">
-</div>
 
 <div class="campo">
-<label class="titulo-campo">CPF</label>
-<input type="text" name="CPF">
-</div>
+
+<label class="titulo-campo">
+RG
+</label>
+
+<input
+    type="text"
+    name="RG"
+>
 
 </div>
+
+
 
 <div class="campo">
-<label class="titulo-campo">Como nos conheceu?</label>
+
+<label class="titulo-campo">
+CPF
+</label>
+
+<input
+    type="text"
+    name="CPF"
+>
+
+</div>
+
+
+</div>
+
+
+
+<div class="campo">
+
+<label class="titulo-campo">
+Como nos conheceu?
+</label>
+
 
 <div class="radio-linha">
 
+
 <label class="opcao">
-<input type="radio" name="Como nos conheceu" value="Facebook">
+
+<input
+    type="radio"
+    name="Como nos conheceu"
+    value="Facebook"
+>
+
 Facebook
+
 </label>
 
+
+
 <label class="opcao">
-<input type="radio" name="Como nos conheceu" value="Instagram">
+
+<input
+    type="radio"
+    name="Como nos conheceu"
+    value="Instagram"
+>
+
 Instagram
+
 </label>
 
+
+
 <label class="opcao">
-<input type="radio" name="Como nos conheceu" value="Indicação de amigo">
+
+<input
+    type="radio"
+    name="Como nos conheceu"
+    value="Indicação de amigo"
+>
+
 Indicação de amigo
+
 </label>
 
+
+
 <label class="opcao">
-<input type="radio" name="Como nos conheceu" value="Google">
+
+<input
+    type="radio"
+    name="Como nos conheceu"
+    value="Google"
+>
+
 Google
+
 </label>
+
+
 
 <label class="opcao">
-<input type="radio" name="Como nos conheceu" value="Outros">
+
+<input
+    type="radio"
+    name="Como nos conheceu"
+    value="Outros"
+>
+
 Outros
+
 </label>
 
-</div>
-
-<input type="text" name="Como nos conheceu — Outros" placeholder="Se marcou Outros, qual?">
-
-</div>
 
 </div>
 
 
-<!-- =========================
-     SAÚDE
-========================= -->
+<input
+    type="text"
+    name="Como nos conheceu — Outros"
+    placeholder="Se marcou Outros, qual?"
+>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AVALIAÇÃO DE SAÚDE
+===================================================== -->
 
 <div class="secao">
 
-<h2>AVALIAÇÃO DE SAÚDE</h2>
+<h2>
+AVALIAÇÃO DE SAÚDE
+</h2>
 
 <p style="font-size:11px;color:#666;margin-top:-8px;margin-bottom:15px;">
 Marque NÃO ou SIM. Se SIM, descreva quando necessário.
 </p>
 
 
-<script>
-const perguntasSaude = [
-"Alergia?",
-"Epilepsia (tremores, espasmos, desmaios recorrentes)?",
-"Hipertensão?",
-"Queloide?",
-"Diabetes?",
-"Doença autoimune?",
-"Problemas de coagulação?",
-"Gestante?",
-"Lactante?",
-"Cardiopatia?",
-"Anemia?",
-"Doença de pele?",
-"Remédio para Acne?",
-"Possui condição que possa interferir?",
-"Possui algum problema não citado?",
-"É fumante?",
-"Queda de pressão?",
-"Está em período menstrual?"
-];
+<div id="perguntasSaude"></div>
 
-document.write(
-    perguntasSaude.map((pergunta, index) => `
-        <div class="pergunta-saude">
-            <div class="texto">${pergunta}</div>
-
-            <div class="radio-linha">
-
-                <label class="opcao">
-                    <input
-                        type="radio"
-                        name="saude_${index}"
-                        value="Não"
-                        required
-                    >
-                    NÃO
-                </label>
-
-                <label class="opcao">
-                    <input
-                        type="radio"
-                        name="saude_${index}"
-                        value="Sim"
-                    >
-                    SIM
-                </label>
-
-            </div>
-
-        </div>
-    `).join("")
-);
-</script>
 
 </div>
 
 
-<!-- =========================
+
+<!-- =====================================================
      INFORMAÇÕES COMPLEMENTARES
-========================= -->
+===================================================== -->
 
 <div class="secao">
 
-<h2>INFORMAÇÕES COMPLEMENTARES</h2>
+<h2>
+INFORMAÇÕES COMPLEMENTARES
+</h2>
+
 
 
 <div class="campo">
+
 <label class="titulo-campo">
 Alergias conhecidas (medicamentos, alimentos, látex, etc.)
 </label>
-<textarea name="Alergias conhecidas"></textarea>
+
+<textarea
+    name="Alergias conhecidas"
+></textarea>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Medicamentos em uso atualmente
 </label>
-<textarea name="Medicamentos em uso"></textarea>
+
+<textarea
+    name="Medicamentos em uso"
+></textarea>
+
 </div>
 
 
+
 <div class="campo">
-<label class="titulo-campo">Está em tratamento dermatológico?</label>
+
+<label class="titulo-campo">
+Está em tratamento dermatológico?
+</label>
 
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Tratamento dermatológico" value="Não" required>
+
+<input
+    type="radio"
+    name="Tratamento dermatológico"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Tratamento dermatológico" value="Sim">
+
+<input
+    type="radio"
+    name="Tratamento dermatológico"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Fez algum procedimento recente (cirurgia, botox, peeling)?
 </label>
@@ -691,20 +1072,38 @@ Fez algum procedimento recente (cirurgia, botox, peeling)?
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Procedimento recente" value="Não" required>
+
+<input
+    type="radio"
+    name="Procedimento recente"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Procedimento recente" value="Sim">
+
+<input
+    type="radio"
+    name="Procedimento recente"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Teve exposição solar intensa nos últimos 7 dias?
 </label>
@@ -712,20 +1111,38 @@ Teve exposição solar intensa nos últimos 7 dias?
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Exposição solar" value="Não" required>
+
+<input
+    type="radio"
+    name="Exposição solar"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Exposição solar" value="Sim">
+
+<input
+    type="radio"
+    name="Exposição solar"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Está se sentindo bem hoje? — Febre, gripe, dor, mal-estar
 </label>
@@ -733,20 +1150,38 @@ Está se sentindo bem hoje? — Febre, gripe, dor, mal-estar
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Está se sentindo bem" value="Sim" required>
+
+<input
+    type="radio"
+    name="Está se sentindo bem"
+    value="Sim"
+    required
+>
+
 SIM
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Está se sentindo bem" value="Não">
+
+<input
+    type="radio"
+    name="Está se sentindo bem"
+    value="Não"
+>
+
 NÃO
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Se alimentou nas últimas 4 horas?
 </label>
@@ -754,39 +1189,77 @@ Se alimentou nas últimas 4 horas?
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Alimentação últimas 4 horas" value="Não" required>
+
+<input
+    type="radio"
+    name="Alimentação últimas 4 horas"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Alimentação últimas 4 horas" value="Sim">
+
+<input
+    type="radio"
+    name="Alimentação últimas 4 horas"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
-<label class="titulo-campo">Está hidratado(a)?</label>
+
+<label class="titulo-campo">
+Está hidratado(a)?
+</label>
 
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Está hidratado" value="Não" required>
+
+<input
+    type="radio"
+    name="Está hidratado"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Está hidratado" value="Sim">
+
+<input
+    type="radio"
+    name="Está hidratado"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Ingeriu bebida alcoólica nas últimas 24h?
 </label>
@@ -794,20 +1267,38 @@ Ingeriu bebida alcoólica nas últimas 24h?
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Bebida alcoólica" value="Não" required>
+
+<input
+    type="radio"
+    name="Bebida alcoólica"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Bebida alcoólica" value="Sim">
+
+<input
+    type="radio"
+    name="Bebida alcoólica"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Fez uso de substância (drogas) recentemente?
 </label>
@@ -815,102 +1306,172 @@ Fez uso de substância (drogas) recentemente?
 <div class="radio-linha">
 
 <label class="opcao">
-<input type="radio" name="Uso de substância" value="Não" required>
+
+<input
+    type="radio"
+    name="Uso de substância"
+    value="Não"
+    required
+>
+
 NÃO
+
 </label>
 
 <label class="opcao">
-<input type="radio" name="Uso de substância" value="Sim">
+
+<input
+    type="radio"
+    name="Uso de substância"
+    value="Sim"
+>
+
 SIM
+
 </label>
 
 </div>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Há alguma informação importante que devemos saber?
 </label>
-<textarea name="Informação importante"></textarea>
+
+<textarea
+    name="Informação importante"
+></textarea>
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Local do corpo a ser tatuado
 </label>
+
 <input
     type="text"
     name="Local do corpo"
     placeholder="Ex: antebraço direito, costas..."
 >
+
 </div>
 
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Descrição da arte
 </label>
+
 <textarea
     name="Descrição da arte"
     placeholder="Tamanho aproximado, referências, estilo"
 ></textarea>
+
 </div>
+
 
 
 <div class="duas-colunas">
 
+
 <div class="campo">
+
 <label class="titulo-campo">
 Profissional responsável
 </label>
-<input type="text" name="Profissional responsável">
+
+<input
+    type="text"
+    name="Profissional responsável"
+>
+
 </div>
 
+
+
 <div class="campo">
+
 <label class="titulo-campo">
 Valor combinado — R$
 </label>
-<input type="number" name="Valor combinado" step="0.01">
+
+<input
+    type="number"
+    name="Valor combinado"
+    step="0.01"
+>
+
+</div>
+
+
 </div>
 
 </div>
 
-</div>
 
 
-<!-- =========================
+<!-- =====================================================
      DECLARAÇÃO
-========================= -->
+===================================================== -->
 
 <div class="secao">
 
-<h2>DECLARAÇÃO</h2>
+<h2>
+DECLARAÇÃO
+</h2>
+
 
 <div class="declaracao">
+
 Declaro que as informações acima são verdadeiras e que estou ciente de que a omissão
 de informações pode colocar em risco minha saúde. Autorizo a realização do procedimento
 de tatuagem e isento o estúdio e o profissional de responsabilidade por complicações
 decorrentes de informações omitidas. Comprometo-me a seguir todos os cuidados
 pós-procedimento recomendados.
+
 </div>
 
+
+
 <label class="checkbox-concordo">
-<input type="checkbox" name="Concordo com declaração" value="Sim" required>
-<span>Li e concordo com a declaração acima *</span>
+
+<input
+    type="checkbox"
+    name="Concordo com declaração"
+    value="Sim"
+    required
+>
+
+<span>
+Li e concordo com a declaração acima *
+</span>
+
 </label>
 
 </div>
 
 
-<!-- =========================
-     USO DE IMAGEM
-========================= -->
+
+<!-- =====================================================
+     AUTORIZAÇÃO DE IMAGEM
+===================================================== -->
 
 <div class="secao">
 
-<h2>AUTORIZAÇÃO DE USO DE IMAGEM</h2>
+<h2>
+AUTORIZAÇÃO DE USO DE IMAGEM
+</h2>
+
 
 <div class="campo">
 
@@ -918,32 +1479,56 @@ pós-procedimento recomendados.
 Autoriza divulgação da tatuagem em portfólio/redes?
 </label>
 
+
 <div class="radio-linha">
 
+
 <label class="opcao">
-<input type="radio" name="Uso de imagem" value="AUTORIZO" required>
+
+<input
+    type="radio"
+    name="Uso de imagem"
+    value="AUTORIZO"
+    required
+>
+
 AUTORIZO
+
 </label>
+
+
 
 <label class="opcao">
-<input type="radio" name="Uso de imagem" value="NAO AUTORIZO">
+
+<input
+    type="radio"
+    name="Uso de imagem"
+    value="NAO AUTORIZO"
+>
+
 NAO AUTORIZO
+
 </label>
 
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- =========================
+
+
+<!-- =====================================================
      ASSINATURA
-========================= -->
+===================================================== -->
 
 <div class="secao">
 
-<h2>ASSINATURA</h2>
+<h2>
+ASSINATURA
+</h2>
+
 
 
 <div class="campo">
@@ -952,9 +1537,14 @@ NAO AUTORIZO
 Nome completo (assinatura por extenso) *
 </label>
 
-<input type="text" name="Nome da assinatura" required>
+<input
+    type="text"
+    name="Nome da assinatura"
+    required
+>
 
 </div>
+
 
 
 <div class="campo">
@@ -963,10 +1553,18 @@ Nome completo (assinatura por extenso) *
 Data *
 </label>
 
-<input type="date" name="Data da assinatura" id="dataAssinatura" required>
+<input
+    type="date"
+    name="Data da assinatura"
+    id="dataAssinatura"
+    required
+>
 
 </div>
 
+
+
+<!-- ASSINATURA CLIENTE -->
 
 <div class="assinatura-area">
 
@@ -974,7 +1572,9 @@ Data *
 Assinatura do cliente (desenhe no quadro)
 </label>
 
-<canvas id="assinaturaCliente"></canvas>
+<canvas
+    id="assinaturaCliente"
+></canvas>
 
 <button
     type="button"
@@ -987,13 +1587,18 @@ LIMPAR
 </div>
 
 
+
+<!-- ASSINATURA RESPONSÁVEL -->
+
 <div class="assinatura-area">
 
 <label>
 Assinatura do responsável (se menor de 18 anos)
 </label>
 
-<canvas id="assinaturaResponsavel"></canvas>
+<canvas
+    id="assinaturaResponsavel"
+></canvas>
 
 <button
     type="button"
@@ -1005,266 +1610,40 @@ LIMPAR
 
 </div>
 
+
 </div>
 
 
-<button type="submit" class="botao-enviar" id="botaoEnviar">
+
+<!-- ENVIAR -->
+
+<button
+    type="submit"
+    class="botao-enviar"
+    id="botaoEnviar"
+>
 ENVIAR
 </button>
 
 
+
 <div class="rodape">
+
 Nunca envie senhas pelo Formulários.<br>
+
 Conteúdo protegido pela LGPD.
+
 </div>
+
 
 </form>
 
 </section>
 
 
+
 <script>
 
-/* =========================
-   ABRIR / FECHAR FICHA
-========================= */
 
-function abrirFicha() {
-
-    document.getElementById("capa").style.display = "none";
-
-    document.getElementById("formularioPagina").style.display = "block";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-}
-
-
-function voltarCapa() {
-
-    document.getElementById("formularioPagina").style.display = "none";
-
-    document.getElementById("capa").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-}
-
-
-/* =========================
-   DATA AUTOMÁTICA
-========================= */
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    const hoje = new Date();
-
-    const ano = hoje.getFullYear();
-
-    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-
-    const dia = String(hoje.getDate()).padStart(2, "0");
-
-    const dataHoje = `${ano}-${mes}-${dia}`;
-
-    const campoData = document.getElementById("dataAssinatura");
-
-    if (campoData) {
-        campoData.value = dataHoje;
-    }
-
-});
-
-
-/* =========================
-   ASSINATURA DIGITAL
-========================= */
-
-const assinaturas = {};
-
-
-function prepararAssinatura(id) {
-
-    const canvas = document.getElementById(id);
-
-    const ctx = canvas.getContext("2d");
-
-    let desenhando = false;
-
-
-    function ajustarCanvas() {
-
-        const rect = canvas.getBoundingClientRect();
-
-        const dpr = window.devicePixelRatio || 1;
-
-        canvas.width = rect.width * dpr;
-
-        canvas.height = rect.height * dpr;
-
-        ctx.scale(dpr, dpr);
-
-        ctx.lineWidth = 2;
-
-        ctx.lineCap = "round";
-
-        ctx.lineJoin = "round";
-
-        ctx.strokeStyle = "#111";
-    }
-
-
-    ajustarCanvas();
-
-
-    function posicao(e) {
-
-        const rect = canvas.getBoundingClientRect();
-
-        let clientX;
-        let clientY;
-
-        if (e.touches && e.touches.length) {
-
-            clientX = e.touches[0].clientX;
-
-            clientY = e.touches[0].clientY;
-
-        } else {
-
-            clientX = e.clientX;
-
-            clientY = e.clientY;
-
-        }
-
-        return {
-            x: clientX - rect.left,
-            y: clientY - rect.top
-        };
-
-    }
-
-
-    function iniciar(e) {
-
-        e.preventDefault();
-
-        desenhando = true;
-
-        const p = posicao(e);
-
-        ctx.beginPath();
-
-        ctx.moveTo(p.x, p.y);
-
-    }
-
-
-    function desenhar(e) {
-
-        if (!desenhando) return;
-
-        e.preventDefault();
-
-        const p = posicao(e);
-
-        ctx.lineTo(p.x, p.y);
-
-        ctx.stroke();
-
-    }
-
-
-    function parar() {
-
-        desenhando = false;
-
-        ctx.closePath();
-
-    }
-
-
-    canvas.addEventListener("mousedown", iniciar);
-
-    canvas.addEventListener("mousemove", desenhar);
-
-    canvas.addEventListener("mouseup", parar);
-
-    canvas.addEventListener("mouseleave", parar);
-
-
-    canvas.addEventListener("touchstart", iniciar, {
-        passive: false
-    });
-
-    canvas.addEventListener("touchmove", desenhar, {
-        passive: false
-    });
-
-    canvas.addEventListener("touchend", parar);
-
-
-    assinaturas[id] = canvas;
-
-}
-
-
-function limparAssinatura(id) {
-
-    const canvas = document.getElementById(id);
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    document.getElementById(id + "Dados").value = "";
-
-}
-
-
-/* Inicializa assinaturas */
-
-prepararAssinatura("assinaturaCliente");
-
-prepararAssinatura("assinaturaResponsavel");
-
-
-/* =========================
-   ENVIO
-========================= */
-
-document.getElementById("anamneseForm").addEventListener("submit", function(e) {
-
-    const cliente = document.getElementById("assinaturaCliente");
-
-    const responsavel = document.getElementById("assinaturaResponsavel");
-
-    document.getElementById("assinaturaClienteDados").value =
-        cliente.toDataURL("image/png");
-
-    document.getElementById("assinaturaResponsavelDados").value =
-        responsavel.toDataURL("image/png");
-
-
-    const botao = document.getElementById("botaoEnviar");
-
-    botao.disabled = true;
-
-    botao.textContent = "ENVIANDO...";
-
-});
-
-</script>
-
-</body>
-</html>
+/* =====================================================
+   ABRIR
