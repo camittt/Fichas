@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -131,4 +130,68 @@
     <label for="telefone">Telefone</label>
     <input type="tel" id="telefone" name="telefone" required>
 
-    <label for="data_n
+    <label for="data_nascimento">Data de nascimento</label>
+    <input type="date" id="data_nascimento" name="data_nascimento">
+
+    <h2>Informações importantes</h2>
+
+    <label for="medicamentos">
+      Faz uso de algum medicamento?
+    </label>
+    <textarea id="medicamentos" name="medicamentos"
+      placeholder="Informe o nome do medicamento, se houver."></textarea>
+
+    <label for="alergias">
+      Possui alguma alergia?
+    </label>
+    <textarea id="alergias" name="alergias"
+      placeholder="Informe quais, se houver."></textarea>
+
+    <label for="reacoes">
+      Já teve alguma reação a produtos, cosméticos, tintas ou materiais?
+    </label>
+    <textarea id="reacoes" name="reacoes"
+      placeholder="Descreva, se houver."></textarea>
+
+    <label for="observacoes">
+      Existe alguma outra informação que você considera importante comunicar antes da tatuagem?
+    </label>
+    <textarea id="observacoes" name="observacoes"></textarea>
+
+    <h2>Autorização de imagem</h2>
+
+    <label class="checkbox">
+      <input type="checkbox" name="autorizacao_imagem">
+      <span>
+        Autorizo a Cami tattoo a fotografar e/ou filmar minha tatuagem
+        e utilizar essas imagens para divulgação do trabalho em redes
+        sociais e materiais relacionados ao trabalho, por prazo indeterminado.
+      </span>
+    </label>
+
+    <h2>Declaração</h2>
+
+    <label class="checkbox">
+      <input type="checkbox" name="declaracao" required>
+      <span>
+        Declaro que as informações fornecidas nesta ficha são verdadeiras
+        e estou ciente de que devo informar qualquer alteração ou condição
+        relevante antes da realização da tatuagem.
+      </span>
+    </label>
+
+    <button type="submit" class="button">
+      Enviar ficha
+    </button>
+
+    <div class="notice">
+      Seus dados devem ser tratados de forma privada e utilizados
+      exclusivamente para os fins relacionados ao atendimento.
+    </div>
+
+  </form>
+
+</div>
+
+</body>
+</html>
