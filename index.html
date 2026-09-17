@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ficha de Anamnese — Tatuagem</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,29 +21,31 @@ html {
 
 body {
     margin: 0;
-    background: #111;
-    color: #eee;
-    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    background: #101010;
+    color: #eeeeee;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .container {
     width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 18px 14px 50px;
+    max-width: 760px;
+    margin: auto;
+    padding: 16px 14px 50px;
 }
 
 /* =========================
-   CABEÇALHO
+   CABEÇALHO RETANGULAR
 ========================= */
 
 .cabecalho {
     position: relative;
-    min-height: 250px;
-    margin-bottom: 25px;
+    width: 100%;
+    min-height: 245px;
+    margin-bottom: 22px;
     padding: 45px 25px;
-    background: #090909;
-    border: 1px solid #777;
+    background: #080808;
+    border: 1px solid #666;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,19 +55,17 @@ body {
 .cabecalho::before {
     content: "";
     position: absolute;
-    inset: 14px;
-    border: 1px solid #555;
-    pointer-events: none;
+    inset: 13px;
+    border: 1px solid #4c4c4c;
 }
 
 .cabecalho::after {
     content: "";
     position: absolute;
-    width: 95px;
-    height: 95px;
-    border: 1px solid #555;
+    width: 78px;
+    height: 78px;
+    border: 1px solid #444;
     transform: rotate(45deg);
-    pointer-events: none;
 }
 
 .cabecalho-conteudo {
@@ -73,64 +74,65 @@ body {
     text-align: center;
 }
 
-.cabecalho .pequeno {
-    font-size: 10px;
+.cabecalho-pequeno {
+    margin-bottom: 17px;
+    color: #aaa;
+    font-size: 9px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 18px;
 }
 
 .cabecalho h1 {
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 10vw, 64px);
-    font-weight: 500;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(34px, 9vw, 60px);
     line-height: .85;
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .cabecalho h1 span {
     display: block;
-    font-size: .58em;
-    letter-spacing: 7px;
     margin-top: 12px;
+    font-size: .55em;
+    letter-spacing: 6px;
 }
 
-.cabecalho .subtitulo {
+.cabecalho-subtitulo {
     margin-top: 20px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     color: #999;
+    font-size: 8px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
 }
 
 /* =========================
-   TÍTULOS
+   SEÇÕES
 ========================= */
 
 .secao {
-    margin-top: 24px;
-    padding: 24px 18px;
-    background: #171717;
+    margin-top: 18px;
+    padding: 22px 18px;
+    background: #181818;
     border: 1px solid #333;
 }
 
 .titulo-secao {
-    margin: 0 0 20px;
+    margin: 0 0 18px;
     padding-bottom: 12px;
     border-bottom: 1px solid #444;
-    font-family: 'Cormorant Garamond', serif;
+    color: #eeeeee;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 28px;
     font-weight: 600;
     letter-spacing: 1px;
 }
 
 .descricao {
+    margin: 0 0 14px;
     color: #aaa;
     font-size: 12px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.7;
 }
 
 /* =========================
@@ -141,32 +143,35 @@ body {
     margin-bottom: 18px;
 }
 
+.campo:last-child {
+    margin-bottom: 0;
+}
+
 label,
 .label {
     display: block;
     margin-bottom: 8px;
+    color: #ddd;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: .5px;
-    color: #ddd;
+    line-height: 1.45;
 }
 
-.obrigatorio {
-    color: #fff;
-}
-
-input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
 textarea,
 select {
     width: 100%;
     min-height: 48px;
     padding: 13px 14px;
+    background: #0d0d0d;
+    color: #fff;
     border: 1px solid #444;
     border-radius: 2px;
     outline: none;
-    background: #0d0d0d;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 14px;
 }
 
@@ -215,29 +220,33 @@ select:focus {
 }
 
 .pergunta-texto {
-    font-size: 13px;
-    line-height: 1.45;
-    margin-bottom: 12px;
+    margin-bottom: 11px;
+    color: #ddd;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .opcoes {
     display: flex;
+    width: 100%;
     gap: 10px;
 }
 
 .opcao {
-    flex: 1;
     position: relative;
+    flex: 1;
 }
 
 .opcao input {
     position: absolute;
+    width: 1px;
+    height: 1px;
     opacity: 0;
-    pointer-events: none;
 }
 
 .opcao label {
-    min-height: 44px;
+    width: 100%;
+    min-height: 45px;
     margin: 0;
     padding: 12px;
     border: 1px solid #444;
@@ -245,14 +254,16 @@ select:focus {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
+    text-align: center;
+    transition: .15s;
 }
 
 .opcao input:checked + label {
-    background: #eee;
+    background: #eeeeee;
     color: #111;
-    border-color: #eee;
+    border-color: #eeeeee;
 }
 
 /* =========================
@@ -260,22 +271,22 @@ select:focus {
 ========================= */
 
 .declaracao {
-    padding: 18px;
+    padding: 17px;
     background: #0c0c0c;
     border: 1px solid #444;
+    color: #bbb;
     font-size: 12px;
     line-height: 1.7;
-    color: #bbb;
 }
 
 .check {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    margin-top: 18px;
+    margin-top: 17px;
 }
 
-.check input {
+.check input[type="checkbox"] {
     width: 20px;
     min-width: 20px;
     height: 20px;
@@ -286,6 +297,7 @@ select:focus {
 
 .check label {
     margin: 0;
+    color: #ddd;
     font-size: 11px;
     line-height: 1.5;
 }
@@ -295,35 +307,50 @@ select:focus {
 ========================= */
 
 .assinatura-box {
-    margin-top: 22px;
+    margin-top: 24px;
 }
 
 .assinatura-titulo {
     display: block;
     margin-bottom: 9px;
+    color: #ddd;
     font-size: 11px;
     font-weight: 600;
+}
+
+.area-assinatura {
+    position: relative;
+    width: 100%;
 }
 
 canvas {
     display: block;
     width: 100%;
-    height: 180px;
-    background: #fff;
+    height: 190px;
+    background: #ffffff;
     border: 1px solid #555;
     border-radius: 2px;
+
+    /*
+       MUITO IMPORTANTE:
+       permite desenhar com o dedo
+       sem o celular interpretar como rolagem.
+    */
     touch-action: none;
-    cursor: crosshair;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .botao-limpar {
     width: auto;
+    min-height: 40px;
     margin-top: 8px;
-    padding: 9px 15px;
-    border: 1px solid #555;
+    padding: 9px 16px;
     background: transparent;
     color: #aaa;
-    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #555;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 10px;
     letter-spacing: 1px;
     cursor: pointer;
@@ -335,12 +362,14 @@ canvas {
 
 .botao-enviar {
     width: 100%;
-    min-height: 58px;
+    min-height: 60px;
     margin-top: 28px;
-    border: none;
-    background: #eee;
+    padding: 15px;
+    background: #eeeeee;
     color: #111;
-    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -349,6 +378,7 @@ canvas {
 
 .botao-enviar:disabled {
     opacity: .6;
+    cursor: wait;
 }
 
 /* =========================
@@ -357,24 +387,50 @@ canvas {
 
 .rodape {
     margin-top: 25px;
-    text-align: center;
     color: #666;
     font-size: 9px;
-    line-height: 1.6;
+    line-height: 1.7;
+    text-align: center;
 }
 
 /* =========================
-   MENSAGEM
+   RESPONSIVO
 ========================= */
 
-.mensagem {
-    display: none;
-    margin-top: 20px;
-    padding: 18px;
-    border: 1px solid #555;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.6;
+@media (max-width: 480px) {
+
+    .container {
+        padding: 10px 10px 40px;
+    }
+
+    .cabecalho {
+        min-height: 220px;
+        padding: 35px 18px;
+    }
+
+    .cabecalho::before {
+        inset: 10px;
+    }
+
+    .cabecalho h1 {
+        font-size: 37px;
+    }
+
+    .cabecalho h1 span {
+        letter-spacing: 4px;
+    }
+
+    .secao {
+        padding: 20px 15px;
+    }
+
+    .titulo-secao {
+        font-size: 26px;
+    }
+
+    canvas {
+        height: 180px;
+    }
 }
 </style>
 </head>
@@ -383,21 +439,35 @@ canvas {
 
 <div class="container">
 
-    <!-- CABEÇALHO -->
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
     <header class="cabecalho">
+
         <div class="cabecalho-conteudo">
-            <div class="pequeno">Atendimento de tatuagem</div>
+
+            <div class="cabecalho-pequeno">
+                Atendimento de tatuagem
+            </div>
 
             <h1>
                 FICHA DE ANAMNESE
                 <span>— TATUAGEM —</span>
             </h1>
 
-            <div class="subtitulo">
+            <div class="cabecalho-subtitulo">
                 Preenchimento obrigatório antes do procedimento
             </div>
+
         </div>
+
     </header>
+
+
+    <!-- =========================
+         FORMULÁRIO
+    ========================== -->
 
     <form
         id="formulario"
@@ -405,17 +475,41 @@ canvas {
         method="POST"
     >
 
-        <input type="hidden" name="_subject" value="Nova Ficha de Anamnese — Tatuagem">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_honey" value="">
-        <input type="hidden" name="_next" value="">
+        <!-- CONFIGURAÇÃO DO FORMSubmit -->
 
-        <input type="hidden" name="Assinatura do cliente" id="assinaturaClienteDados">
-        <input type="hidden" name="Assinatura do responsável" id="assinaturaResponsavelDados">
+        <input
+            type="hidden"
+            name="_subject"
+            value="Nova Ficha de Anamnese — Tatuagem"
+        >
 
-        <!-- INTRODUÇÃO -->
+        <input
+            type="hidden"
+            name="_template"
+            value="table"
+        >
+
+        <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+        >
+
+        <input
+            type="text"
+            name="_honey"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+        >
+
+
+        <!-- =========================
+             INTRODUÇÃO
+        ========================== -->
+
         <section class="secao">
+
             <p class="descricao">
                 Esta ficha tem como objetivo garantir sua segurança e a qualidade
                 do procedimento. Por favor, responda com atenção e sinceridade.
@@ -426,79 +520,202 @@ canvas {
             <p class="descricao">
                 <strong>*</strong> Indica uma pergunta obrigatória
             </p>
+
         </section>
 
-        <!-- DADOS PESSOAIS -->
+
+        <!-- =========================
+             DADOS PESSOAIS
+        ========================== -->
+
         <section class="secao">
-            <h2 class="titulo-secao">DADOS PESSOAIS</h2>
+
+            <h2 class="titulo-secao">
+                DADOS PESSOAIS
+            </h2>
 
             <div class="campo">
-                <label>Nome completo *</label>
-                <input type="text" name="Nome completo" required>
+
+                <label>
+                    Nome completo *
+                </label>
+
+                <input
+                    type="text"
+                    name="Nome completo"
+                    required
+                >
+
             </div>
 
-            <div class="campo">
-                <label>E-mail *</label>
-                <input type="email" name="E-mail" required>
-            </div>
 
             <div class="campo">
-                <label>Telefone *</label>
-                <input type="tel" name="Telefone" required>
+
+                <label>
+                    E-mail *
+                </label>
+
+                <input
+                    type="email"
+                    name="E-mail"
+                    required
+                >
+
             </div>
 
+
             <div class="campo">
-                <label>Endereço — Rua, número, bairro, cidade</label>
-                <input type="text" name="Endereço">
+
+                <label>
+                    Telefone *
+                </label>
+
+                <input
+                    type="tel"
+                    name="Telefone"
+                    required
+                >
+
             </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Endereço — Rua, número, bairro, cidade
+                </label>
+
+                <input
+                    type="text"
+                    name="Endereço"
+                >
+
+            </div>
+
 
             <div class="grid">
 
                 <div class="campo">
-                    <label>Data de nascimento *</label>
-                    <input type="date" name="Data de nascimento" required>
+
+                    <label>
+                        Data de nascimento *
+                    </label>
+
+                    <input
+                        type="date"
+                        name="Data de nascimento"
+                        required
+                    >
+
                 </div>
 
-                <div class="campo">
-                    <label>RG</label>
-                    <input type="text" name="RG">
-                </div>
 
                 <div class="campo">
-                    <label>CPF</label>
-                    <input type="text" name="CPF">
+
+                    <label>
+                        RG
+                    </label>
+
+                    <input
+                        type="text"
+                        name="RG"
+                    >
+
                 </div>
 
+
                 <div class="campo">
-                    <label>Data da sessão</label>
-                    <input type="date" name="Data da sessão">
+
+                    <label>
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        name="CPF"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Data da sessão
+                    </label>
+
+                    <input
+                        type="date"
+                        name="Data da sessão"
+                    >
+
                 </div>
 
             </div>
 
+
             <div class="campo">
-                <label>Como nos conheceu?</label>
+
+                <label>
+                    Como nos conheceu?
+                </label>
 
                 <select name="Como nos conheceu">
-                    <option value="">Selecione</option>
-                    <option>Facebook</option>
-                    <option>Instagram</option>
-                    <option>Indicação de amigo</option>
-                    <option>Google</option>
-                    <option>Outros</option>
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="Facebook">
+                        Facebook
+                    </option>
+
+                    <option value="Instagram">
+                        Instagram
+                    </option>
+
+                    <option value="Indicação de amigo">
+                        Indicação de amigo
+                    </option>
+
+                    <option value="Google">
+                        Google
+                    </option>
+
+                    <option value="Outros">
+                        Outros
+                    </option>
+
                 </select>
+
             </div>
+
 
             <div class="campo">
-                <label>Se escolheu "Outros", especifique:</label>
-                <input type="text" name="Como nos conheceu — Outros">
+
+                <label>
+                    Se escolheu "Outros", especifique:
+                </label>
+
+                <input
+                    type="text"
+                    name="Como nos conheceu — Outros"
+                >
+
             </div>
+
         </section>
 
-        <!-- SAÚDE -->
+
+        <!-- =========================
+             AVALIAÇÃO DE SAÚDE
+        ========================== -->
+
         <section class="secao">
 
-            <h2 class="titulo-secao">AVALIAÇÃO DE SAÚDE</h2>
+            <h2 class="titulo-secao">
+                AVALIAÇÃO DE SAÚDE
+            </h2>
 
             <p class="descricao">
                 <strong>Histórico de Saúde</strong><br>
@@ -509,67 +726,136 @@ canvas {
 
         </section>
 
-        <!-- COMPLEMENTARES -->
+
+        <!-- =========================
+             INFORMAÇÕES COMPLEMENTARES
+        ========================== -->
+
         <section class="secao">
 
-            <h2 class="titulo-secao">INFORMAÇÕES COMPLEMENTARES</h2>
+            <h2 class="titulo-secao">
+                INFORMAÇÕES COMPLEMENTARES
+            </h2>
+
 
             <div class="campo">
-                <label>Alergias conhecidas (medicamentos, alimentos, látex, etc.)</label>
-                <textarea name="Alergias conhecidas"></textarea>
+
+                <label>
+                    Alergias conhecidas (medicamentos, alimentos, látex, etc.)
+                </label>
+
+                <textarea
+                    name="Alergias conhecidas"
+                ></textarea>
+
             </div>
 
+
             <div class="campo">
-                <label>Medicamentos em uso atualmente</label>
-                <textarea name="Medicamentos em uso"></textarea>
+
+                <label>
+                    Medicamentos em uso atualmente
+                </label>
+
+                <textarea
+                    name="Medicamentos em uso atualmente"
+                ></textarea>
+
             </div>
+
 
             <div id="perguntasComplementares"></div>
 
-            <div class="campo">
-                <label>Há alguma informação importante que devemos saber?</label>
-                <textarea name="Informação importante"></textarea>
-            </div>
 
             <div class="campo">
-                <label>Local do corpo a ser tatuado</label>
+
+                <label>
+                    Há alguma informação importante que devemos saber?
+                </label>
+
+                <textarea
+                    name="Informação importante"
+                ></textarea>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Local do corpo a ser tatuado
+                </label>
+
                 <input
                     type="text"
                     name="Local do corpo"
                     placeholder="Ex: antebraço direito, costas..."
                 >
+
             </div>
 
+
             <div class="campo">
-                <label>Descrição da arte</label>
+
+                <label>
+                    Descrição da arte
+                </label>
+
                 <textarea
                     name="Descrição da arte"
                     placeholder="Tamanho aproximado, referências, estilo"
                 ></textarea>
+
             </div>
+
 
             <div class="grid">
 
                 <div class="campo">
-                    <label>Profissional responsável</label>
-                    <input type="text" name="Profissional responsável">
+
+                    <label>
+                        Profissional responsável
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Profissional responsável"
+                    >
+
                 </div>
 
+
                 <div class="campo">
-                    <label>Valor combinado — R$</label>
-                    <input type="text" name="Valor combinado">
+
+                    <label>
+                        Valor combinado — R$
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Valor combinado"
+                    >
+
                 </div>
 
             </div>
 
         </section>
 
-        <!-- DECLARAÇÃO -->
+
+        <!-- =========================
+             DECLARAÇÃO
+        ========================== -->
+
         <section class="secao">
 
-            <h2 class="titulo-secao">DECLARAÇÃO</h2>
+            <h2 class="titulo-secao">
+                DECLARAÇÃO
+            </h2>
+
 
             <div class="declaracao">
+
                 Declaro que as informações acima são verdadeiras e que estou
                 ciente de que a omissão de informações pode colocar em risco
                 minha saúde. Autorizo a realização do procedimento de tatuagem
@@ -577,28 +863,39 @@ canvas {
                 complicações decorrentes de informações omitidas.
                 Comprometo-me a seguir todos os cuidados pós-procedimento
                 recomendados.
+
             </div>
 
+
             <div class="check">
+
                 <input
                     type="checkbox"
                     id="concordo"
                     name="Declaração"
-                    value="Li e concordo"
+                    value="Li e concordo com a declaração acima"
                     required
                 >
 
                 <label for="concordo">
                     Li e concordo com a declaração acima *
                 </label>
+
             </div>
 
         </section>
 
-        <!-- USO DE IMAGEM -->
+
+        <!-- =========================
+             USO DE IMAGEM
+        ========================== -->
+
         <section class="secao">
 
-            <h2 class="titulo-secao">AUTORIZAÇÃO DE USO DE IMAGEM</h2>
+            <h2 class="titulo-secao">
+                AUTORIZAÇÃO DE USO DE IMAGEM
+            </h2>
+
 
             <div class="campo">
 
@@ -606,27 +903,39 @@ canvas {
                     Autoriza divulgação da tatuagem em portfólio/redes?
                 </label>
 
+
                 <div class="opcoes">
 
                     <div class="opcao">
+
                         <input
                             type="radio"
-                            id="autorizaSim"
+                            id="imagemSim"
                             name="Uso de imagem"
                             value="AUTORIZO"
                             required
                         >
-                        <label for="autorizaSim">AUTORIZO</label>
+
+                        <label for="imagemSim">
+                            AUTORIZO
+                        </label>
+
                     </div>
 
+
                     <div class="opcao">
+
                         <input
                             type="radio"
-                            id="autorizaNao"
+                            id="imagemNao"
                             name="Uso de imagem"
                             value="NAO AUTORIZO"
                         >
-                        <label for="autorizaNao">NÃO AUTORIZO</label>
+
+                        <label for="imagemNao">
+                            NAO AUTORIZO
+                        </label>
+
                     </div>
 
                 </div>
@@ -635,29 +944,50 @@ canvas {
 
         </section>
 
-        <!-- ASSINATURA -->
+
+        <!-- =========================
+             ASSINATURA
+        ========================== -->
+
         <section class="secao">
 
-            <h2 class="titulo-secao">ASSINATURA</h2>
+            <h2 class="titulo-secao">
+                ASSINATURA
+            </h2>
+
 
             <div class="campo">
-                <label>Nome completo (assinatura por extenso) *</label>
+
+                <label>
+                    Nome completo (assinatura por extenso) *
+                </label>
+
                 <input
                     type="text"
-                    name="Nome para assinatura"
+                    name="Nome completo da assinatura"
                     required
                 >
+
             </div>
 
+
             <div class="campo">
-                <label>Data *</label>
+
+                <label>
+                    Data *
+                </label>
+
                 <input
                     type="date"
                     name="Data da assinatura"
                     id="dataAssinatura"
                     required
                 >
+
             </div>
+
+
+            <!-- ASSINATURA CLIENTE -->
 
             <div class="assinatura-box">
 
@@ -665,388 +995,16 @@ canvas {
                     Assinatura do cliente (desenhe no quadro)
                 </span>
 
-                <canvas id="assinaturaCliente"></canvas>
+
+                <div class="area-assinatura">
+
+                    <canvas
+                        id="assinaturaCliente"
+                    ></canvas>
+
+                </div>
+
 
                 <button
                     type="button"
-                    class="botao-limpar"
-                    onclick="limparAssinatura('assinaturaCliente')"
-                >
-                    LIMPAR
-                </button>
-
-            </div>
-
-            <div class="assinatura-box">
-
-                <span class="assinatura-titulo">
-                    Assinatura do responsável (se menor de 18 anos)
-                </span>
-
-                <canvas id="assinaturaResponsavel"></canvas>
-
-                <button
-                    type="button"
-                    class="botao-limpar"
-                    onclick="limparAssinatura('assinaturaResponsavel')"
-                >
-                    LIMPAR
-                </button>
-
-            </div>
-
-            <button
-                type="submit"
-                id="botaoEnviar"
-                class="botao-enviar"
-            >
-                ENVIAR
-            </button>
-
-            <div id="mensagem" class="mensagem"></div>
-
-        </section>
-
-    </form>
-
-    <footer class="rodape">
-        Nunca envie senhas pelo Formulários.<br>
-        Conteúdo protegido pela LGPD.
-    </footer>
-
-</div>
-
-
-<script>
-
-/* =========================
-   PERGUNTAS DE SAÚDE
-========================= */
-
-const perguntasSaude = [
-    "Alergia?",
-    "Epilepsia (tremores, espasmos, desmaios recorrentes)?",
-    "Hipertensão?",
-    "Queloide?",
-    "Diabetes?",
-    "Doença autoimune?",
-    "Problemas de coagulação?",
-    "Gestante?",
-    "Lactante?",
-    "Cardiopatia?",
-    "Anemia?",
-    "Doença de pele?",
-    "Remédio para Acne?",
-    "Possui condição que possa interferir?",
-    "Possui algum problema não citado?",
-    "É fumante?",
-    "Queda de pressão?",
-    "Está em período menstrual?"
-];
-
-const perguntasSaudeContainer =
-    document.getElementById("perguntasSaude");
-
-perguntasSaude.forEach((pergunta, index) => {
-
-    const id = "saude_" + index;
-
-    perguntasSaudeContainer.innerHTML += `
-        <div class="pergunta">
-
-            <div class="pergunta-texto">
-                ${pergunta}
-            </div>
-
-            <div class="opcoes">
-
-                <div class="opcao">
-                    <input
-                        type="radio"
-                        id="${id}_nao"
-                        name="${id}"
-                        value="NÃO"
-                        required
-                    >
-                    <label for="${id}_nao">NÃO</label>
-                </div>
-
-                <div class="opcao">
-                    <input
-                        type="radio"
-                        id="${id}_sim"
-                        name="${id}"
-                        value="SIM"
-                    >
-                    <label for="${id}_sim">SIM</label>
-                </div>
-
-            </div>
-
-        </div>
-    `;
-});
-
-
-/* =========================
-   PERGUNTAS COMPLEMENTARES
-========================= */
-
-const perguntasComplementares = [
-    ["Está em tratamento dermatológico?", "tratamento_dermatologico"],
-    ["Fez algum procedimento recente (cirurgia, botox, peeling)?", "procedimento_recente"],
-    ["Teve exposição solar intensa nos últimos 7 dias?", "exposicao_solar"],
-    ["Está se sentindo bem hoje? (Febre, gripe, dor, mal-estar)", "sentindo_bem"],
-    ["Se alimentou nas últimas 4 horas?", "alimentacao"],
-    ["Está hidratado(a)?", "hidratacao"],
-    ["Ingeriu bebida alcoólica nas últimas 24h?", "alcool"],
-    ["Fez uso de substância (drogas) recentemente?", "substancia"]
-];
-
-const complementaresContainer =
-    document.getElementById("perguntasComplementares");
-
-perguntasComplementares.forEach((item, index) => {
-
-    const pergunta = item[0];
-    const id = item[1];
-
-    const simPrimeiro =
-        id === "sentindo_bem";
-
-    complementaresContainer.innerHTML += `
-        <div class="pergunta">
-
-            <div class="pergunta-texto">
-                ${pergunta}
-            </div>
-
-            <div class="opcoes">
-
-                <div class="opcao">
-                    <input
-                        type="radio"
-                        id="${id}_nao"
-                        name="${id}"
-                        value="NÃO"
-                        required
-                    >
-                    <label for="${id}_nao">NÃO</label>
-                </div>
-
-                <div class="opcao">
-                    <input
-                        type="radio"
-                        id="${id}_sim"
-                        name="${id}"
-                        value="SIM"
-                    >
-                    <label for="${id}_sim">SIM</label>
-                </div>
-
-            </div>
-
-        </div>
-    `;
-});
-
-
-/* =========================
-   DATAS
-========================= */
-
-const hoje = new Date();
-const ano = hoje.getFullYear();
-const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-const dia = String(hoje.getDate()).padStart(2, "0");
-
-const dataAtual = `${ano}-${mes}-${dia}`;
-
-document.getElementById("dataAssinatura").value = dataAtual;
-
-
-/* =========================
-   ASSINATURA COM O DEDO
-========================= */
-
-const assinaturas = {};
-
-function prepararAssinatura(id) {
-
-    const canvas = document.getElementById(id);
-
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-
-    const dpr = window.devicePixelRatio || 1;
-
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.scale(dpr, dpr);
-
-    ctx.strokeStyle = "#111";
-    ctx.lineWidth = 2.2;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    let desenhando = false;
-    let ultimaX = 0;
-    let ultimaY = 0;
-
-    function posicao(evento) {
-
-        const r = canvas.getBoundingClientRect();
-
-        return {
-            x: evento.clientX - r.left,
-            y: evento.clientY - r.top
-        };
-    }
-
-    canvas.addEventListener("pointerdown", function(evento) {
-
-        evento.preventDefault();
-
-        desenhando = true;
-
-        const pos = posicao(evento);
-
-        ultimaX = pos.x;
-        ultimaY = pos.y;
-
-        canvas.setPointerCapture(evento.pointerId);
-
-        ctx.beginPath();
-        ctx.arc(ultimaX, ultimaY, 1.1, 0, Math.PI * 2);
-        ctx.fillStyle = "#111";
-        ctx.fill();
-
-    });
-
-    canvas.addEventListener("pointermove", function(evento) {
-
-        if (!desenhando) return;
-
-        evento.preventDefault();
-
-        const pos = posicao(evento);
-
-        ctx.beginPath();
-        ctx.moveTo(ultimaX, ultimaY);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-
-        ultimaX = pos.x;
-        ultimaY = pos.y;
-
-    });
-
-    function parar(evento) {
-
-        desenhando = false;
-
-        try {
-            if (canvas.hasPointerCapture(evento.pointerId)) {
-                canvas.releasePointerCapture(evento.pointerId);
-            }
-        } catch (e) {}
-    }
-
-    canvas.addEventListener("pointerup", parar);
-    canvas.addEventListener("pointercancel", parar);
-    canvas.addEventListener("pointerleave", function(evento) {
-        if (evento.pointerType === "mouse") {
-            desenhando = false;
-        }
-    });
-
-    assinaturas[id] = true;
-}
-
-
-prepararAssinatura("assinaturaCliente");
-prepararAssinatura("assinaturaResponsavel");
-
-
-/* =========================
-   LIMPAR ASSINATURA
-========================= */
-
-function limparAssinatura(id) {
-
-    const canvas = document.getElementById(id);
-
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-}
-
-
-/* =========================
-   ENVIAR FORMULÁRIO
-========================= */
-
-const formulario = document.getElementById("formulario");
-
-formulario.addEventListener("submit", function(evento) {
-
-    const canvasCliente =
-        document.getElementById("assinaturaCliente");
-
-    const canvasResponsavel =
-        document.getElementById("assinaturaResponsavel");
-
-    /*
-      Transformamos as assinaturas em imagens
-      e colocamos os dados no formulário.
-    */
-
-    if (canvasCliente) {
-        document.getElementById(
-            "assinaturaClienteDados"
-        ).value = canvasCliente.toDataURL("image/png");
-    }
-
-    if (canvasResponsavel) {
-        document.getElementById(
-            "assinaturaResponsavelDados"
-        ).value = canvasResponsavel.toDataURL("image/png");
-    }
-
-    const botao =
-        document.getElementById("botaoEnviar");
-
-    botao.disabled = true;
-    botao.textContent = "ENVIANDO...";
-
-});
-
-
-/* =========================
-   REDIMENSIONAMENTO
-========================= */
-
-window.addEventListener("resize", function() {
-
-    /*
-      Não reinicializamos automaticamente as assinaturas
-      para não apagar uma assinatura que já foi desenhada.
-    */
-
-});
-
-</script>
-
-</body>
-</html>
+                    class="botao-li
